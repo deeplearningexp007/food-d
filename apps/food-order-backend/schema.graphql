@@ -1,0 +1,3130 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AccessLog {
+  action: String
+  deviceInfo: JSON
+  errorMessage: String
+  id: Float!
+  ipAddress: String
+  responseStatus: Float
+  timestamp: DateTime
+  userModels: UserModel
+}
+
+input AccessLogCreateInput {
+  action: String
+  deviceInfo: JSON
+  errorMessage: String
+  ipAddress: String
+  responseStatus: Float
+  timestamp: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input AccessLogCreateNestedManyWithoutUserModelsInput {
+  connect: [AccessLogWhereUniqueInput!]
+}
+
+input AccessLogListRelationFilter {
+  every: AccessLogWhereInput
+  none: AccessLogWhereInput
+  some: AccessLogWhereInput
+}
+
+input AccessLogOrderByInput {
+  action: SortOrder
+  deviceInfo: SortOrder
+  errorMessage: SortOrder
+  id: SortOrder
+  ipAddress: SortOrder
+  responseStatus: SortOrder
+  timestamp: SortOrder
+  user_id: SortOrder
+}
+
+input AccessLogUpdateInput {
+  action: String
+  deviceInfo: JSON
+  errorMessage: String
+  ipAddress: String
+  responseStatus: Float
+  timestamp: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input AccessLogUpdateManyWithoutUserModelsInput {
+  connect: [AccessLogWhereUniqueInput!]
+  disconnect: [AccessLogWhereUniqueInput!]
+  set: [AccessLogWhereUniqueInput!]
+}
+
+input AccessLogWhereInput {
+  action: StringNullableFilter
+  deviceInfo: JsonFilter
+  errorMessage: StringNullableFilter
+  id: IntFilter
+  ipAddress: StringNullableFilter
+  responseStatus: IntNullableFilter
+  timestamp: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input AccessLogWhereUniqueInput {
+  id: Float!
+}
+
+input BooleanFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+input BooleanNullableFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+type Coupon {
+  code: String!
+  couponRedemptions(orderBy: [CouponRedemptionOrderByInput!], skip: Float, take: Float, where: CouponRedemptionWhereInput): [CouponRedemption!]!
+  discountPercentage: Float!
+  expirationDate: DateTime!
+  id: Float!
+  isActive: Boolean
+  orders(orderBy: [OrderOrderByInput!], skip: Float, take: Float, where: OrderWhereInput): [Order!]!
+}
+
+input CouponCreateInput {
+  code: String!
+  couponRedemptions: CouponRedemptionCreateNestedManyWithoutCouponsInput
+  discountPercentage: Float!
+  expirationDate: DateTime!
+  isActive: Boolean
+  orders: OrderCreateNestedManyWithoutCouponsInput
+}
+
+input CouponOrderByInput {
+  code: SortOrder
+  discountPercentage: SortOrder
+  expirationDate: SortOrder
+  id: SortOrder
+  isActive: SortOrder
+}
+
+type CouponRedemption {
+  coupons: Coupon
+  id: Float!
+  isRedeemed: Boolean
+  redemptionDate: DateTime!
+  userModels: UserModel
+}
+
+input CouponRedemptionCreateInput {
+  coupons: CouponWhereUniqueInput!
+  isRedeemed: Boolean
+  redemptionDate: DateTime!
+  userModels: UserModelWhereUniqueInput!
+}
+
+input CouponRedemptionCreateNestedManyWithoutCouponsInput {
+  connect: [CouponRedemptionWhereUniqueInput!]
+}
+
+input CouponRedemptionCreateNestedManyWithoutUserModelsInput {
+  connect: [CouponRedemptionWhereUniqueInput!]
+}
+
+input CouponRedemptionListRelationFilter {
+  every: CouponRedemptionWhereInput
+  none: CouponRedemptionWhereInput
+  some: CouponRedemptionWhereInput
+}
+
+input CouponRedemptionOrderByInput {
+  coupon_id: SortOrder
+  id: SortOrder
+  isRedeemed: SortOrder
+  redemptionDate: SortOrder
+  user_id: SortOrder
+}
+
+input CouponRedemptionUpdateInput {
+  coupons: CouponWhereUniqueInput
+  isRedeemed: Boolean
+  redemptionDate: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input CouponRedemptionUpdateManyWithoutCouponsInput {
+  connect: [CouponRedemptionWhereUniqueInput!]
+  disconnect: [CouponRedemptionWhereUniqueInput!]
+  set: [CouponRedemptionWhereUniqueInput!]
+}
+
+input CouponRedemptionUpdateManyWithoutUserModelsInput {
+  connect: [CouponRedemptionWhereUniqueInput!]
+  disconnect: [CouponRedemptionWhereUniqueInput!]
+  set: [CouponRedemptionWhereUniqueInput!]
+}
+
+input CouponRedemptionWhereInput {
+  coupons: CouponWhereUniqueInput
+  id: IntFilter
+  isRedeemed: BooleanNullableFilter
+  redemptionDate: DateTimeFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input CouponRedemptionWhereUniqueInput {
+  id: Float!
+}
+
+input CouponUpdateInput {
+  code: String
+  couponRedemptions: CouponRedemptionUpdateManyWithoutCouponsInput
+  discountPercentage: Float
+  expirationDate: DateTime
+  isActive: Boolean
+  orders: OrderUpdateManyWithoutCouponsInput
+}
+
+input CouponWhereInput {
+  code: StringFilter
+  couponRedemptions: CouponRedemptionListRelationFilter
+  discountPercentage: DecimalFilter
+  expirationDate: DateTimeFilter
+  id: IntFilter
+  isActive: BooleanNullableFilter
+  orders: OrderListRelationFilter
+}
+
+input CouponWhereUniqueInput {
+  id: Float!
+}
+
+input Credentials {
+  password: String!
+  username: String!
+}
+
+type CustomerPreference {
+  createdAt: DateTime
+  id: Float!
+  preferenceType: String
+  preferenceValue: String
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input CustomerPreferenceCreateInput {
+  preferenceType: String
+  preferenceValue: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input CustomerPreferenceCreateNestedManyWithoutUserModelsInput {
+  connect: [CustomerPreferenceWhereUniqueInput!]
+}
+
+input CustomerPreferenceListRelationFilter {
+  every: CustomerPreferenceWhereInput
+  none: CustomerPreferenceWhereInput
+  some: CustomerPreferenceWhereInput
+}
+
+input CustomerPreferenceOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  preferenceType: SortOrder
+  preferenceValue: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+input CustomerPreferenceUpdateInput {
+  preferenceType: String
+  preferenceValue: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input CustomerPreferenceUpdateManyWithoutUserModelsInput {
+  connect: [CustomerPreferenceWhereUniqueInput!]
+  disconnect: [CustomerPreferenceWhereUniqueInput!]
+  set: [CustomerPreferenceWhereUniqueInput!]
+}
+
+input CustomerPreferenceWhereInput {
+  createdAt: DateTimeNullableFilter
+  id: IntFilter
+  preferenceType: StringNullableFilter
+  preferenceValue: StringNullableFilter
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input CustomerPreferenceWhereUniqueInput {
+  id: Float!
+}
+
+type CustomerSubscription {
+  activationDate: DateTime!
+  createdAt: DateTime!
+  expirationDate: DateTime
+  id: Float!
+  renewalCount: Float!
+  subscriptionPlans: SubscriptionPlan
+  subscriptions: Subscription
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input CustomerSubscriptionCreateInput {
+  activationDate: DateTime!
+  expirationDate: DateTime
+  renewalCount: Float!
+  subscriptionPlans: SubscriptionPlanWhereUniqueInput!
+  subscriptions: SubscriptionWhereUniqueInput!
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput!
+}
+
+input CustomerSubscriptionCreateNestedManyWithoutSubscriptionPlansInput {
+  connect: [CustomerSubscriptionWhereUniqueInput!]
+}
+
+input CustomerSubscriptionCreateNestedManyWithoutSubscriptionsInput {
+  connect: [CustomerSubscriptionWhereUniqueInput!]
+}
+
+input CustomerSubscriptionCreateNestedManyWithoutUserModelsInput {
+  connect: [CustomerSubscriptionWhereUniqueInput!]
+}
+
+input CustomerSubscriptionListRelationFilter {
+  every: CustomerSubscriptionWhereInput
+  none: CustomerSubscriptionWhereInput
+  some: CustomerSubscriptionWhereInput
+}
+
+input CustomerSubscriptionOrderByInput {
+  activationDate: SortOrder
+  createdAt: SortOrder
+  expirationDate: SortOrder
+  id: SortOrder
+  plan_id: SortOrder
+  renewalCount: SortOrder
+  subscription_id: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+input CustomerSubscriptionUpdateInput {
+  activationDate: DateTime
+  expirationDate: DateTime
+  renewalCount: Float
+  subscriptionPlans: SubscriptionPlanWhereUniqueInput
+  subscriptions: SubscriptionWhereUniqueInput
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input CustomerSubscriptionUpdateManyWithoutSubscriptionPlansInput {
+  connect: [CustomerSubscriptionWhereUniqueInput!]
+  disconnect: [CustomerSubscriptionWhereUniqueInput!]
+  set: [CustomerSubscriptionWhereUniqueInput!]
+}
+
+input CustomerSubscriptionUpdateManyWithoutSubscriptionsInput {
+  connect: [CustomerSubscriptionWhereUniqueInput!]
+  disconnect: [CustomerSubscriptionWhereUniqueInput!]
+  set: [CustomerSubscriptionWhereUniqueInput!]
+}
+
+input CustomerSubscriptionUpdateManyWithoutUserModelsInput {
+  connect: [CustomerSubscriptionWhereUniqueInput!]
+  disconnect: [CustomerSubscriptionWhereUniqueInput!]
+  set: [CustomerSubscriptionWhereUniqueInput!]
+}
+
+input CustomerSubscriptionWhereInput {
+  activationDate: DateTimeFilter
+  createdAt: DateTimeFilter
+  expirationDate: DateTimeNullableFilter
+  id: IntFilter
+  renewalCount: IntFilter
+  subscriptionPlans: SubscriptionPlanWhereUniqueInput
+  subscriptions: SubscriptionWhereUniqueInput
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input CustomerSubscriptionWhereUniqueInput {
+  id: Float!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+input DecimalFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: Float
+  notIn: [Float!]
+}
+
+input DecimalNullableFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: Float
+  notIn: [Float!]
+}
+
+type ErrorLog {
+  errorCode: Float
+  errorMessage: String
+  id: Float!
+  requestInfo: JSON
+  stackTrace: String
+  timestamp: DateTime
+  userModels: UserModel
+}
+
+input ErrorLogCreateInput {
+  errorCode: Float
+  errorMessage: String
+  requestInfo: JSON
+  stackTrace: String
+  timestamp: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input ErrorLogCreateNestedManyWithoutUserModelsInput {
+  connect: [ErrorLogWhereUniqueInput!]
+}
+
+input ErrorLogListRelationFilter {
+  every: ErrorLogWhereInput
+  none: ErrorLogWhereInput
+  some: ErrorLogWhereInput
+}
+
+input ErrorLogOrderByInput {
+  errorCode: SortOrder
+  errorMessage: SortOrder
+  id: SortOrder
+  requestInfo: SortOrder
+  stackTrace: SortOrder
+  timestamp: SortOrder
+  user_id: SortOrder
+}
+
+input ErrorLogUpdateInput {
+  errorCode: Float
+  errorMessage: String
+  requestInfo: JSON
+  stackTrace: String
+  timestamp: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input ErrorLogUpdateManyWithoutUserModelsInput {
+  connect: [ErrorLogWhereUniqueInput!]
+  disconnect: [ErrorLogWhereUniqueInput!]
+  set: [ErrorLogWhereUniqueInput!]
+}
+
+input ErrorLogWhereInput {
+  errorCode: IntNullableFilter
+  errorMessage: StringNullableFilter
+  id: IntFilter
+  requestInfo: JsonFilter
+  stackTrace: StringNullableFilter
+  timestamp: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input ErrorLogWhereUniqueInput {
+  id: Float!
+}
+
+type Favorite {
+  createdAt: DateTime
+  favoriteMenuItems(orderBy: [FavoriteMenuItemOrderByInput!], skip: Float, take: Float, where: FavoriteMenuItemWhereInput): [FavoriteMenuItem!]!
+  favoriteRestaurants(orderBy: [FavoriteRestaurantOrderByInput!], skip: Float, take: Float, where: FavoriteRestaurantWhereInput): [FavoriteRestaurant!]!
+  id: Float!
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input FavoriteCreateInput {
+  favoriteMenuItems: FavoriteMenuItemCreateNestedManyWithoutFavoritesInput
+  favoriteRestaurants: FavoriteRestaurantCreateNestedManyWithoutFavoritesInput
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input FavoriteCreateNestedManyWithoutUserModelsInput {
+  connect: [FavoriteWhereUniqueInput!]
+}
+
+input FavoriteListRelationFilter {
+  every: FavoriteWhereInput
+  none: FavoriteWhereInput
+  some: FavoriteWhereInput
+}
+
+type FavoriteMenuItem {
+  createdAt: DateTime
+  favorites: Favorite
+  id: Float!
+  menuItems: MenuItem
+}
+
+input FavoriteMenuItemCreateInput {
+  favorites: FavoriteWhereUniqueInput
+  menuItems: MenuItemWhereUniqueInput
+}
+
+input FavoriteMenuItemCreateNestedManyWithoutFavoritesInput {
+  connect: [FavoriteMenuItemWhereUniqueInput!]
+}
+
+input FavoriteMenuItemCreateNestedManyWithoutMenuItemsInput {
+  connect: [FavoriteMenuItemWhereUniqueInput!]
+}
+
+input FavoriteMenuItemListRelationFilter {
+  every: FavoriteMenuItemWhereInput
+  none: FavoriteMenuItemWhereInput
+  some: FavoriteMenuItemWhereInput
+}
+
+input FavoriteMenuItemOrderByInput {
+  createdAt: SortOrder
+  favorite_id: SortOrder
+  id: SortOrder
+  menu_item_id: SortOrder
+}
+
+input FavoriteMenuItemUpdateInput {
+  favorites: FavoriteWhereUniqueInput
+  menuItems: MenuItemWhereUniqueInput
+}
+
+input FavoriteMenuItemUpdateManyWithoutFavoritesInput {
+  connect: [FavoriteMenuItemWhereUniqueInput!]
+  disconnect: [FavoriteMenuItemWhereUniqueInput!]
+  set: [FavoriteMenuItemWhereUniqueInput!]
+}
+
+input FavoriteMenuItemUpdateManyWithoutMenuItemsInput {
+  connect: [FavoriteMenuItemWhereUniqueInput!]
+  disconnect: [FavoriteMenuItemWhereUniqueInput!]
+  set: [FavoriteMenuItemWhereUniqueInput!]
+}
+
+input FavoriteMenuItemWhereInput {
+  createdAt: DateTimeNullableFilter
+  favorites: FavoriteWhereUniqueInput
+  id: IntFilter
+  menuItems: MenuItemWhereUniqueInput
+}
+
+input FavoriteMenuItemWhereUniqueInput {
+  id: Float!
+}
+
+input FavoriteOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+type FavoriteRestaurant {
+  createdAt: DateTime
+  favorites: Favorite
+  id: Float!
+  restaurants: Restaurant
+}
+
+input FavoriteRestaurantCreateInput {
+  favorites: FavoriteWhereUniqueInput
+  restaurants: RestaurantWhereUniqueInput
+}
+
+input FavoriteRestaurantCreateNestedManyWithoutFavoritesInput {
+  connect: [FavoriteRestaurantWhereUniqueInput!]
+}
+
+input FavoriteRestaurantCreateNestedManyWithoutRestaurantsInput {
+  connect: [FavoriteRestaurantWhereUniqueInput!]
+}
+
+input FavoriteRestaurantListRelationFilter {
+  every: FavoriteRestaurantWhereInput
+  none: FavoriteRestaurantWhereInput
+  some: FavoriteRestaurantWhereInput
+}
+
+input FavoriteRestaurantOrderByInput {
+  createdAt: SortOrder
+  favorite_id: SortOrder
+  id: SortOrder
+  restaurant_id: SortOrder
+}
+
+input FavoriteRestaurantUpdateInput {
+  favorites: FavoriteWhereUniqueInput
+  restaurants: RestaurantWhereUniqueInput
+}
+
+input FavoriteRestaurantUpdateManyWithoutFavoritesInput {
+  connect: [FavoriteRestaurantWhereUniqueInput!]
+  disconnect: [FavoriteRestaurantWhereUniqueInput!]
+  set: [FavoriteRestaurantWhereUniqueInput!]
+}
+
+input FavoriteRestaurantUpdateManyWithoutRestaurantsInput {
+  connect: [FavoriteRestaurantWhereUniqueInput!]
+  disconnect: [FavoriteRestaurantWhereUniqueInput!]
+  set: [FavoriteRestaurantWhereUniqueInput!]
+}
+
+input FavoriteRestaurantWhereInput {
+  createdAt: DateTimeNullableFilter
+  favorites: FavoriteWhereUniqueInput
+  id: IntFilter
+  restaurants: RestaurantWhereUniqueInput
+}
+
+input FavoriteRestaurantWhereUniqueInput {
+  id: Float!
+}
+
+input FavoriteUpdateInput {
+  favoriteMenuItems: FavoriteMenuItemUpdateManyWithoutFavoritesInput
+  favoriteRestaurants: FavoriteRestaurantUpdateManyWithoutFavoritesInput
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input FavoriteUpdateManyWithoutUserModelsInput {
+  connect: [FavoriteWhereUniqueInput!]
+  disconnect: [FavoriteWhereUniqueInput!]
+  set: [FavoriteWhereUniqueInput!]
+}
+
+input FavoriteWhereInput {
+  createdAt: DateTimeNullableFilter
+  favoriteMenuItems: FavoriteMenuItemListRelationFilter
+  favoriteRestaurants: FavoriteRestaurantListRelationFilter
+  id: IntFilter
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input FavoriteWhereUniqueInput {
+  id: Float!
+}
+
+type GeoLocation {
+  address: String
+  city: String
+  country: String
+  geofences(orderBy: [GeofenceOrderByInput!], skip: Float, take: Float, where: GeofenceWhereInput): [Geofence!]!
+  id: Float!
+  initialSignon: Boolean
+  latitude: Float
+  longitude: Float
+  postalCode: String
+  state: String
+}
+
+input GeoLocationCreateInput {
+  address: String
+  city: String
+  country: String
+  geofences: GeofenceCreateNestedManyWithoutGeoLocationsInput
+  initialSignon: Boolean
+  latitude: Float
+  longitude: Float
+  postalCode: String
+  state: String
+}
+
+input GeoLocationOrderByInput {
+  address: SortOrder
+  city: SortOrder
+  country: SortOrder
+  id: SortOrder
+  initialSignon: SortOrder
+  latitude: SortOrder
+  longitude: SortOrder
+  postalCode: SortOrder
+  state: SortOrder
+}
+
+input GeoLocationUpdateInput {
+  address: String
+  city: String
+  country: String
+  geofences: GeofenceUpdateManyWithoutGeoLocationsInput
+  initialSignon: Boolean
+  latitude: Float
+  longitude: Float
+  postalCode: String
+  state: String
+}
+
+input GeoLocationWhereInput {
+  address: StringNullableFilter
+  city: StringNullableFilter
+  country: StringNullableFilter
+  geofences: GeofenceListRelationFilter
+  id: IntFilter
+  initialSignon: BooleanNullableFilter
+  latitude: DecimalNullableFilter
+  longitude: DecimalNullableFilter
+  postalCode: StringNullableFilter
+  state: StringNullableFilter
+}
+
+input GeoLocationWhereUniqueInput {
+  id: Float!
+}
+
+type Geofence {
+  createdAt: DateTime
+  description: String
+  geoLocations: GeoLocation
+  id: Float!
+  name: String
+  radius: Float
+  updatedAt: DateTime
+}
+
+input GeofenceCreateInput {
+  createdAt: DateTime
+  description: String
+  geoLocations: GeoLocationWhereUniqueInput
+  name: String
+  radius: Float
+  updatedAt: DateTime
+}
+
+input GeofenceCreateNestedManyWithoutGeoLocationsInput {
+  connect: [GeofenceWhereUniqueInput!]
+}
+
+input GeofenceListRelationFilter {
+  every: GeofenceWhereInput
+  none: GeofenceWhereInput
+  some: GeofenceWhereInput
+}
+
+input GeofenceOrderByInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  location_id: SortOrder
+  name: SortOrder
+  radius: SortOrder
+  updatedAt: SortOrder
+}
+
+input GeofenceUpdateInput {
+  createdAt: DateTime
+  description: String
+  geoLocations: GeoLocationWhereUniqueInput
+  name: String
+  radius: Float
+  updatedAt: DateTime
+}
+
+input GeofenceUpdateManyWithoutGeoLocationsInput {
+  connect: [GeofenceWhereUniqueInput!]
+  disconnect: [GeofenceWhereUniqueInput!]
+  set: [GeofenceWhereUniqueInput!]
+}
+
+input GeofenceWhereInput {
+  createdAt: DateTimeNullableFilter
+  description: StringNullableFilter
+  geoLocations: GeoLocationWhereUniqueInput
+  id: IntFilter
+  name: StringNullableFilter
+  radius: IntNullableFilter
+  updatedAt: DateTimeNullableFilter
+}
+
+input GeofenceWhereUniqueInput {
+  id: Float!
+}
+
+type Hashtag {
+  createdAt: DateTime
+  hashText: String
+  id: Float!
+  tag: String
+  updatedAt: DateTime
+}
+
+input HashtagCreateInput {
+  createdAt: DateTime
+  hashText: String
+  tag: String
+  updatedAt: DateTime
+}
+
+input HashtagOrderByInput {
+  createdAt: SortOrder
+  hashText: SortOrder
+  id: SortOrder
+  tag: SortOrder
+  updatedAt: SortOrder
+}
+
+input HashtagUpdateInput {
+  createdAt: DateTime
+  hashText: String
+  tag: String
+  updatedAt: DateTime
+}
+
+input HashtagWhereInput {
+  createdAt: DateTimeNullableFilter
+  hashText: StringNullableFilter
+  id: IntFilter
+  tag: StringNullableFilter
+  updatedAt: DateTimeNullableFilter
+}
+
+input HashtagWhereUniqueInput {
+  id: Float!
+}
+
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: Int
+  notIn: [Int!]
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: Int
+  notIn: [Int!]
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
+
+input JsonFilter {
+  equals: JSONObject
+  not: JSONObject
+}
+
+type Menu {
+  createdAt: DateTime
+  description: String
+  id: Float!
+  isActive: Boolean
+  menuItems(orderBy: [MenuItemOrderByInput!], skip: Float, take: Float, where: MenuItemWhereInput): [MenuItem!]!
+  name: String
+  restaurants: Restaurant
+  updatedAt: DateTime
+}
+
+input MenuCreateInput {
+  createdAt: DateTime
+  description: String
+  isActive: Boolean
+  menuItems: MenuItemCreateNestedManyWithoutMenusInput
+  name: String
+  restaurants: RestaurantWhereUniqueInput
+  updatedAt: DateTime
+}
+
+input MenuCreateNestedManyWithoutRestaurantsInput {
+  connect: [MenuWhereUniqueInput!]
+}
+
+type MenuItem {
+  availableQuantity: Float
+  description: String
+  favoriteMenuItems(orderBy: [FavoriteMenuItemOrderByInput!], skip: Float, take: Float, where: FavoriteMenuItemWhereInput): [FavoriteMenuItem!]!
+  hashtags: String
+  id: Float!
+  imageUrl: String
+  ingredients: String
+  isActive: Boolean
+  isVegetarian: Boolean
+  menuItemCategoriesMenuItemCategoriesMenuItemIdToMenuItems(orderBy: [MenuItemCategoryOrderByInput!], skip: Float, take: Float, where: MenuItemCategoryWhereInput): [MenuItemCategory!]!
+  menuItemCategoriesMenuItemsCategoryIdToMenuItemCategories: MenuItemCategory
+  menus: Menu
+  name: String
+  orderItems(orderBy: [OrderItemOrderByInput!], skip: Float, take: Float, where: OrderItemWhereInput): [OrderItem!]!
+  preparationTime: Float
+  price: Float
+  shareSlug: String
+}
+
+type MenuItemCategory {
+  id: Float!
+  menuItemsMenuItemCategoriesMenuItemIdToMenuItems: MenuItem
+  menuItemsMenuItemsCategoryIdToMenuItemCategories(orderBy: [MenuItemOrderByInput!], skip: Float, take: Float, where: MenuItemWhereInput): [MenuItem!]!
+  name: String
+}
+
+input MenuItemCategoryCreateInput {
+  menuItemsMenuItemCategoriesMenuItemIdToMenuItems: MenuItemWhereUniqueInput
+  menuItemsMenuItemsCategoryIdToMenuItemCategories: MenuItemCreateNestedManyWithoutMenuItemCategoriesInput
+  name: String
+}
+
+input MenuItemCategoryCreateNestedManyWithoutMenuItemsInput {
+  connect: [MenuItemCategoryWhereUniqueInput!]
+}
+
+input MenuItemCategoryListRelationFilter {
+  every: MenuItemCategoryWhereInput
+  none: MenuItemCategoryWhereInput
+  some: MenuItemCategoryWhereInput
+}
+
+input MenuItemCategoryOrderByInput {
+  id: SortOrder
+  menu_item_id: SortOrder
+  name: SortOrder
+}
+
+input MenuItemCategoryUpdateInput {
+  menuItemsMenuItemCategoriesMenuItemIdToMenuItems: MenuItemWhereUniqueInput
+  menuItemsMenuItemsCategoryIdToMenuItemCategories: MenuItemUpdateManyWithoutMenuItemCategoriesInput
+  name: String
+}
+
+input MenuItemCategoryUpdateManyWithoutMenuItemsInput {
+  connect: [MenuItemCategoryWhereUniqueInput!]
+  disconnect: [MenuItemCategoryWhereUniqueInput!]
+  set: [MenuItemCategoryWhereUniqueInput!]
+}
+
+input MenuItemCategoryWhereInput {
+  id: IntFilter
+  menuItemsMenuItemCategoriesMenuItemIdToMenuItems: MenuItemWhereUniqueInput
+  menuItemsMenuItemsCategoryIdToMenuItemCategories: MenuItemListRelationFilter
+  name: StringNullableFilter
+}
+
+input MenuItemCategoryWhereUniqueInput {
+  id: Float!
+}
+
+input MenuItemCreateInput {
+  availableQuantity: Float
+  description: String
+  favoriteMenuItems: FavoriteMenuItemCreateNestedManyWithoutMenuItemsInput
+  hashtags: String
+  imageUrl: String
+  ingredients: String
+  isActive: Boolean
+  isVegetarian: Boolean
+  menuItemCategoriesMenuItemCategoriesMenuItemIdToMenuItems: MenuItemCategoryCreateNestedManyWithoutMenuItemsInput
+  menuItemCategoriesMenuItemsCategoryIdToMenuItemCategories: MenuItemCategoryWhereUniqueInput
+  menus: MenuWhereUniqueInput
+  name: String
+  orderItems: OrderItemCreateNestedManyWithoutMenuItemsInput
+  preparationTime: Float
+  price: Float
+  shareSlug: String
+}
+
+input MenuItemCreateNestedManyWithoutMenuItemCategoriesInput {
+  connect: [MenuItemWhereUniqueInput!]
+}
+
+input MenuItemCreateNestedManyWithoutMenusInput {
+  connect: [MenuItemWhereUniqueInput!]
+}
+
+input MenuItemListRelationFilter {
+  every: MenuItemWhereInput
+  none: MenuItemWhereInput
+  some: MenuItemWhereInput
+}
+
+input MenuItemOrderByInput {
+  availableQuantity: SortOrder
+  category_id: SortOrder
+  description: SortOrder
+  hashtags: SortOrder
+  id: SortOrder
+  imageUrl: SortOrder
+  ingredients: SortOrder
+  isActive: SortOrder
+  isVegetarian: SortOrder
+  menu_id: SortOrder
+  name: SortOrder
+  preparationTime: SortOrder
+  price: SortOrder
+  shareSlug: SortOrder
+}
+
+input MenuItemUpdateInput {
+  availableQuantity: Float
+  description: String
+  favoriteMenuItems: FavoriteMenuItemUpdateManyWithoutMenuItemsInput
+  hashtags: String
+  imageUrl: String
+  ingredients: String
+  isActive: Boolean
+  isVegetarian: Boolean
+  menuItemCategoriesMenuItemCategoriesMenuItemIdToMenuItems: MenuItemCategoryUpdateManyWithoutMenuItemsInput
+  menuItemCategoriesMenuItemsCategoryIdToMenuItemCategories: MenuItemCategoryWhereUniqueInput
+  menus: MenuWhereUniqueInput
+  name: String
+  orderItems: OrderItemUpdateManyWithoutMenuItemsInput
+  preparationTime: Float
+  price: Float
+  shareSlug: String
+}
+
+input MenuItemUpdateManyWithoutMenuItemCategoriesInput {
+  connect: [MenuItemWhereUniqueInput!]
+  disconnect: [MenuItemWhereUniqueInput!]
+  set: [MenuItemWhereUniqueInput!]
+}
+
+input MenuItemUpdateManyWithoutMenusInput {
+  connect: [MenuItemWhereUniqueInput!]
+  disconnect: [MenuItemWhereUniqueInput!]
+  set: [MenuItemWhereUniqueInput!]
+}
+
+input MenuItemWhereInput {
+  availableQuantity: IntNullableFilter
+  description: StringNullableFilter
+  favoriteMenuItems: FavoriteMenuItemListRelationFilter
+  hashtags: StringNullableFilter
+  id: IntFilter
+  imageUrl: StringNullableFilter
+  ingredients: StringNullableFilter
+  isActive: BooleanNullableFilter
+  isVegetarian: BooleanNullableFilter
+  menuItemCategoriesMenuItemCategoriesMenuItemIdToMenuItems: MenuItemCategoryListRelationFilter
+  menuItemCategoriesMenuItemsCategoryIdToMenuItemCategories: MenuItemCategoryWhereUniqueInput
+  menus: MenuWhereUniqueInput
+  name: StringNullableFilter
+  orderItems: OrderItemListRelationFilter
+  preparationTime: IntNullableFilter
+  price: DecimalNullableFilter
+  shareSlug: StringNullableFilter
+}
+
+input MenuItemWhereUniqueInput {
+  id: Float!
+}
+
+input MenuListRelationFilter {
+  every: MenuWhereInput
+  none: MenuWhereInput
+  some: MenuWhereInput
+}
+
+input MenuOrderByInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  isActive: SortOrder
+  name: SortOrder
+  restaurant_id: SortOrder
+  updatedAt: SortOrder
+}
+
+input MenuUpdateInput {
+  createdAt: DateTime
+  description: String
+  isActive: Boolean
+  menuItems: MenuItemUpdateManyWithoutMenusInput
+  name: String
+  restaurants: RestaurantWhereUniqueInput
+  updatedAt: DateTime
+}
+
+input MenuUpdateManyWithoutRestaurantsInput {
+  connect: [MenuWhereUniqueInput!]
+  disconnect: [MenuWhereUniqueInput!]
+  set: [MenuWhereUniqueInput!]
+}
+
+input MenuWhereInput {
+  createdAt: DateTimeNullableFilter
+  description: StringNullableFilter
+  id: IntFilter
+  isActive: BooleanNullableFilter
+  menuItems: MenuItemListRelationFilter
+  name: StringNullableFilter
+  restaurants: RestaurantWhereUniqueInput
+  updatedAt: DateTimeNullableFilter
+}
+
+input MenuWhereUniqueInput {
+  id: Float!
+}
+
+type MetaQueryPayload {
+  count: Float!
+}
+
+type Mutation {
+  createAccessLog(data: AccessLogCreateInput!): AccessLog!
+  createCoupon(data: CouponCreateInput!): Coupon!
+  createCouponRedemption(data: CouponRedemptionCreateInput!): CouponRedemption!
+  createCustomerPreference(data: CustomerPreferenceCreateInput!): CustomerPreference!
+  createCustomerSubscription(data: CustomerSubscriptionCreateInput!): CustomerSubscription!
+  createErrorLog(data: ErrorLogCreateInput!): ErrorLog!
+  createFavorite(data: FavoriteCreateInput!): Favorite!
+  createFavoriteMenuItem(data: FavoriteMenuItemCreateInput!): FavoriteMenuItem!
+  createFavoriteRestaurant(data: FavoriteRestaurantCreateInput!): FavoriteRestaurant!
+  createGeoLocation(data: GeoLocationCreateInput!): GeoLocation!
+  createGeofence(data: GeofenceCreateInput!): Geofence!
+  createHashtag(data: HashtagCreateInput!): Hashtag!
+  createMenu(data: MenuCreateInput!): Menu!
+  createMenuItem(data: MenuItemCreateInput!): MenuItem!
+  createMenuItemCategory(data: MenuItemCategoryCreateInput!): MenuItemCategory!
+  createNotification(data: NotificationCreateInput!): Notification!
+  createNotificationSetting(data: NotificationSettingCreateInput!): NotificationSetting!
+  createOrder(data: OrderCreateInput!): Order!
+  createOrderItem(data: OrderItemCreateInput!): OrderItem!
+  createPayment(data: PaymentCreateInput!): Payment!
+  createPaymentMethod(data: PaymentMethodCreateInput!): PaymentMethod!
+  createReport(data: ReportCreateInput!): Report!
+  createReservation(data: ReservationCreateInput!): Reservation!
+  createRestaurant(data: RestaurantCreateInput!): Restaurant!
+  createRestaurantDetail(data: RestaurantDetailCreateInput!): RestaurantDetail!
+  createReview(data: ReviewCreateInput!): Review!
+  createReviewRating(data: ReviewRatingCreateInput!): ReviewRating!
+  createReward(data: RewardCreateInput!): Reward!
+  createSubscription(data: SubscriptionCreateInput!): Subscription!
+  createSubscriptionPlan(data: SubscriptionPlanCreateInput!): SubscriptionPlan!
+  createSystemSetting(data: SystemSettingCreateInput!): SystemSetting!
+  createTransaction(data: TransactionCreateInput!): Transaction!
+  createTransactionStatus(data: TransactionStatusCreateInput!): TransactionStatus!
+  createUser(data: UserCreateInput!): User!
+  createUserAddress(data: UserAddressCreateInput!): UserAddress!
+  createUserModel(data: UserModelCreateInput!): UserModel!
+  createWishlist(data: WishlistCreateInput!): Wishlist!
+  deleteAccessLog(where: AccessLogWhereUniqueInput!): AccessLog!
+  deleteCoupon(where: CouponWhereUniqueInput!): Coupon!
+  deleteCouponRedemption(where: CouponRedemptionWhereUniqueInput!): CouponRedemption!
+  deleteCustomerPreference(where: CustomerPreferenceWhereUniqueInput!): CustomerPreference!
+  deleteCustomerSubscription(where: CustomerSubscriptionWhereUniqueInput!): CustomerSubscription!
+  deleteErrorLog(where: ErrorLogWhereUniqueInput!): ErrorLog!
+  deleteFavorite(where: FavoriteWhereUniqueInput!): Favorite!
+  deleteFavoriteMenuItem(where: FavoriteMenuItemWhereUniqueInput!): FavoriteMenuItem!
+  deleteFavoriteRestaurant(where: FavoriteRestaurantWhereUniqueInput!): FavoriteRestaurant!
+  deleteGeoLocation(where: GeoLocationWhereUniqueInput!): GeoLocation!
+  deleteGeofence(where: GeofenceWhereUniqueInput!): Geofence!
+  deleteHashtag(where: HashtagWhereUniqueInput!): Hashtag!
+  deleteMenu(where: MenuWhereUniqueInput!): Menu!
+  deleteMenuItem(where: MenuItemWhereUniqueInput!): MenuItem!
+  deleteMenuItemCategory(where: MenuItemCategoryWhereUniqueInput!): MenuItemCategory!
+  deleteNotification(where: NotificationWhereUniqueInput!): Notification!
+  deleteNotificationSetting(where: NotificationSettingWhereUniqueInput!): NotificationSetting!
+  deleteOrder(where: OrderWhereUniqueInput!): Order!
+  deleteOrderItem(where: OrderItemWhereUniqueInput!): OrderItem!
+  deletePayment(where: PaymentWhereUniqueInput!): Payment!
+  deletePaymentMethod(where: PaymentMethodWhereUniqueInput!): PaymentMethod!
+  deleteReport(where: ReportWhereUniqueInput!): Report!
+  deleteReservation(where: ReservationWhereUniqueInput!): Reservation!
+  deleteRestaurant(where: RestaurantWhereUniqueInput!): Restaurant!
+  deleteRestaurantDetail(where: RestaurantDetailWhereUniqueInput!): RestaurantDetail!
+  deleteReview(where: ReviewWhereUniqueInput!): Review!
+  deleteReviewRating(where: ReviewRatingWhereUniqueInput!): ReviewRating!
+  deleteReward(where: RewardWhereUniqueInput!): Reward!
+  deleteSubscription(where: SubscriptionWhereUniqueInput!): Subscription!
+  deleteSubscriptionPlan(where: SubscriptionPlanWhereUniqueInput!): SubscriptionPlan!
+  deleteSystemSetting(where: SystemSettingWhereUniqueInput!): SystemSetting!
+  deleteTransaction(where: TransactionWhereUniqueInput!): Transaction!
+  deleteTransactionStatus(where: TransactionStatusWhereUniqueInput!): TransactionStatus!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  deleteUserAddress(where: UserAddressWhereUniqueInput!): UserAddress!
+  deleteUserModel(where: UserModelWhereUniqueInput!): UserModel!
+  deleteWishlist(where: WishlistWhereUniqueInput!): Wishlist!
+  login(credentials: Credentials!): UserInfo!
+  updateAccessLog(data: AccessLogUpdateInput!, where: AccessLogWhereUniqueInput!): AccessLog!
+  updateCoupon(data: CouponUpdateInput!, where: CouponWhereUniqueInput!): Coupon!
+  updateCouponRedemption(data: CouponRedemptionUpdateInput!, where: CouponRedemptionWhereUniqueInput!): CouponRedemption!
+  updateCustomerPreference(data: CustomerPreferenceUpdateInput!, where: CustomerPreferenceWhereUniqueInput!): CustomerPreference!
+  updateCustomerSubscription(data: CustomerSubscriptionUpdateInput!, where: CustomerSubscriptionWhereUniqueInput!): CustomerSubscription!
+  updateErrorLog(data: ErrorLogUpdateInput!, where: ErrorLogWhereUniqueInput!): ErrorLog!
+  updateFavorite(data: FavoriteUpdateInput!, where: FavoriteWhereUniqueInput!): Favorite!
+  updateFavoriteMenuItem(data: FavoriteMenuItemUpdateInput!, where: FavoriteMenuItemWhereUniqueInput!): FavoriteMenuItem!
+  updateFavoriteRestaurant(data: FavoriteRestaurantUpdateInput!, where: FavoriteRestaurantWhereUniqueInput!): FavoriteRestaurant!
+  updateGeoLocation(data: GeoLocationUpdateInput!, where: GeoLocationWhereUniqueInput!): GeoLocation!
+  updateGeofence(data: GeofenceUpdateInput!, where: GeofenceWhereUniqueInput!): Geofence!
+  updateHashtag(data: HashtagUpdateInput!, where: HashtagWhereUniqueInput!): Hashtag!
+  updateMenu(data: MenuUpdateInput!, where: MenuWhereUniqueInput!): Menu!
+  updateMenuItem(data: MenuItemUpdateInput!, where: MenuItemWhereUniqueInput!): MenuItem!
+  updateMenuItemCategory(data: MenuItemCategoryUpdateInput!, where: MenuItemCategoryWhereUniqueInput!): MenuItemCategory!
+  updateNotification(data: NotificationUpdateInput!, where: NotificationWhereUniqueInput!): Notification!
+  updateNotificationSetting(data: NotificationSettingUpdateInput!, where: NotificationSettingWhereUniqueInput!): NotificationSetting!
+  updateOrder(data: OrderUpdateInput!, where: OrderWhereUniqueInput!): Order!
+  updateOrderItem(data: OrderItemUpdateInput!, where: OrderItemWhereUniqueInput!): OrderItem!
+  updatePayment(data: PaymentUpdateInput!, where: PaymentWhereUniqueInput!): Payment!
+  updatePaymentMethod(data: PaymentMethodUpdateInput!, where: PaymentMethodWhereUniqueInput!): PaymentMethod!
+  updateReport(data: ReportUpdateInput!, where: ReportWhereUniqueInput!): Report!
+  updateReservation(data: ReservationUpdateInput!, where: ReservationWhereUniqueInput!): Reservation!
+  updateRestaurant(data: RestaurantUpdateInput!, where: RestaurantWhereUniqueInput!): Restaurant!
+  updateRestaurantDetail(data: RestaurantDetailUpdateInput!, where: RestaurantDetailWhereUniqueInput!): RestaurantDetail!
+  updateReview(data: ReviewUpdateInput!, where: ReviewWhereUniqueInput!): Review!
+  updateReviewRating(data: ReviewRatingUpdateInput!, where: ReviewRatingWhereUniqueInput!): ReviewRating!
+  updateReward(data: RewardUpdateInput!, where: RewardWhereUniqueInput!): Reward!
+  updateSubscription(data: SubscriptionUpdateInput!, where: SubscriptionWhereUniqueInput!): Subscription!
+  updateSubscriptionPlan(data: SubscriptionPlanUpdateInput!, where: SubscriptionPlanWhereUniqueInput!): SubscriptionPlan!
+  updateSystemSetting(data: SystemSettingUpdateInput!, where: SystemSettingWhereUniqueInput!): SystemSetting!
+  updateTransaction(data: TransactionUpdateInput!, where: TransactionWhereUniqueInput!): Transaction!
+  updateTransactionStatus(data: TransactionStatusUpdateInput!, where: TransactionStatusWhereUniqueInput!): TransactionStatus!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+  updateUserAddress(data: UserAddressUpdateInput!, where: UserAddressWhereUniqueInput!): UserAddress!
+  updateUserModel(data: UserModelUpdateInput!, where: UserModelWhereUniqueInput!): UserModel!
+  updateWishlist(data: WishlistUpdateInput!, where: WishlistWhereUniqueInput!): Wishlist!
+}
+
+type Notification {
+  createdAt: DateTime
+  id: Float!
+  isRead: Boolean
+  message: String
+  userModels: UserModel
+}
+
+input NotificationCreateInput {
+  isRead: Boolean
+  message: String
+  userModels: UserModelWhereUniqueInput
+}
+
+input NotificationCreateNestedManyWithoutUserModelsInput {
+  connect: [NotificationWhereUniqueInput!]
+}
+
+input NotificationListRelationFilter {
+  every: NotificationWhereInput
+  none: NotificationWhereInput
+  some: NotificationWhereInput
+}
+
+input NotificationOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  isRead: SortOrder
+  message: SortOrder
+  user_id: SortOrder
+}
+
+type NotificationSetting {
+  createdAt: DateTime
+  id: Float!
+  settingName: String
+  settingValue: Boolean
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input NotificationSettingCreateInput {
+  settingName: String
+  settingValue: Boolean
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input NotificationSettingCreateNestedManyWithoutUserModelsInput {
+  connect: [NotificationSettingWhereUniqueInput!]
+}
+
+input NotificationSettingListRelationFilter {
+  every: NotificationSettingWhereInput
+  none: NotificationSettingWhereInput
+  some: NotificationSettingWhereInput
+}
+
+input NotificationSettingOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  settingName: SortOrder
+  settingValue: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+input NotificationSettingUpdateInput {
+  settingName: String
+  settingValue: Boolean
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input NotificationSettingUpdateManyWithoutUserModelsInput {
+  connect: [NotificationSettingWhereUniqueInput!]
+  disconnect: [NotificationSettingWhereUniqueInput!]
+  set: [NotificationSettingWhereUniqueInput!]
+}
+
+input NotificationSettingWhereInput {
+  createdAt: DateTimeNullableFilter
+  id: IntFilter
+  settingName: StringNullableFilter
+  settingValue: BooleanNullableFilter
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input NotificationSettingWhereUniqueInput {
+  id: Float!
+}
+
+input NotificationUpdateInput {
+  isRead: Boolean
+  message: String
+  userModels: UserModelWhereUniqueInput
+}
+
+input NotificationUpdateManyWithoutUserModelsInput {
+  connect: [NotificationWhereUniqueInput!]
+  disconnect: [NotificationWhereUniqueInput!]
+  set: [NotificationWhereUniqueInput!]
+}
+
+input NotificationWhereInput {
+  createdAt: DateTimeNullableFilter
+  id: IntFilter
+  isRead: BooleanNullableFilter
+  message: StringNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input NotificationWhereUniqueInput {
+  id: Float!
+}
+
+type Order {
+  coupons: Coupon
+  deliveryTime: DateTime
+  discountAmount: Float
+  finalAmount: Float
+  id: Float!
+  isDelivered: Boolean
+  isPaid: Boolean
+  orderDate: DateTime
+  orderItems(orderBy: [OrderItemOrderByInput!], skip: Float, take: Float, where: OrderItemWhereInput): [OrderItem!]!
+  orderType: String
+  paymentMethods: PaymentMethod
+  payments(orderBy: [PaymentOrderByInput!], skip: Float, take: Float, where: PaymentWhereInput): [Payment!]!
+  restaurants: Restaurant
+  scheduledDeliveryTime: DateTime
+  specialInstructions: String
+  status: String
+  totalAmount: Float
+  transactions(orderBy: [TransactionOrderByInput!], skip: Float, take: Float, where: TransactionWhereInput): [Transaction!]!
+  userAddresses: UserAddress
+  userModels: UserModel
+}
+
+input OrderCreateInput {
+  coupons: CouponWhereUniqueInput
+  deliveryTime: DateTime
+  discountAmount: Float
+  finalAmount: Float
+  isDelivered: Boolean
+  isPaid: Boolean
+  orderItems: OrderItemCreateNestedManyWithoutOrdersInput
+  orderType: String
+  paymentMethods: PaymentMethodWhereUniqueInput
+  payments: PaymentCreateNestedManyWithoutOrdersInput
+  restaurants: RestaurantWhereUniqueInput
+  scheduledDeliveryTime: DateTime
+  specialInstructions: String
+  status: String
+  totalAmount: Float
+  transactions: TransactionCreateNestedManyWithoutOrdersInput
+  userAddresses: UserAddressWhereUniqueInput
+  userModels: UserModelWhereUniqueInput
+}
+
+input OrderCreateNestedManyWithoutCouponsInput {
+  connect: [OrderWhereUniqueInput!]
+}
+
+input OrderCreateNestedManyWithoutPaymentMethodsInput {
+  connect: [OrderWhereUniqueInput!]
+}
+
+input OrderCreateNestedManyWithoutRestaurantsInput {
+  connect: [OrderWhereUniqueInput!]
+}
+
+input OrderCreateNestedManyWithoutUserAddressesInput {
+  connect: [OrderWhereUniqueInput!]
+}
+
+input OrderCreateNestedManyWithoutUserModelsInput {
+  connect: [OrderWhereUniqueInput!]
+}
+
+type OrderItem {
+  customizationOptions: String
+  id: Float!
+  itemDescription: String
+  itemImage: String
+  itemName: String
+  menuItems: MenuItem
+  orders: Order
+  price: Float
+  quantity: Float
+}
+
+input OrderItemCreateInput {
+  customizationOptions: String
+  itemDescription: String
+  itemImage: String
+  itemName: String
+  menuItems: MenuItemWhereUniqueInput
+  orders: OrderWhereUniqueInput
+  price: Float
+  quantity: Float
+}
+
+input OrderItemCreateNestedManyWithoutMenuItemsInput {
+  connect: [OrderItemWhereUniqueInput!]
+}
+
+input OrderItemCreateNestedManyWithoutOrdersInput {
+  connect: [OrderItemWhereUniqueInput!]
+}
+
+input OrderItemListRelationFilter {
+  every: OrderItemWhereInput
+  none: OrderItemWhereInput
+  some: OrderItemWhereInput
+}
+
+input OrderItemOrderByInput {
+  customizationOptions: SortOrder
+  id: SortOrder
+  itemDescription: SortOrder
+  itemImage: SortOrder
+  itemName: SortOrder
+  menu_item_id: SortOrder
+  order_id: SortOrder
+  price: SortOrder
+  quantity: SortOrder
+}
+
+input OrderItemUpdateInput {
+  customizationOptions: String
+  itemDescription: String
+  itemImage: String
+  itemName: String
+  menuItems: MenuItemWhereUniqueInput
+  orders: OrderWhereUniqueInput
+  price: Float
+  quantity: Float
+}
+
+input OrderItemUpdateManyWithoutMenuItemsInput {
+  connect: [OrderItemWhereUniqueInput!]
+  disconnect: [OrderItemWhereUniqueInput!]
+  set: [OrderItemWhereUniqueInput!]
+}
+
+input OrderItemUpdateManyWithoutOrdersInput {
+  connect: [OrderItemWhereUniqueInput!]
+  disconnect: [OrderItemWhereUniqueInput!]
+  set: [OrderItemWhereUniqueInput!]
+}
+
+input OrderItemWhereInput {
+  customizationOptions: StringNullableFilter
+  id: IntFilter
+  itemDescription: StringNullableFilter
+  itemImage: StringNullableFilter
+  itemName: StringNullableFilter
+  menuItems: MenuItemWhereUniqueInput
+  orders: OrderWhereUniqueInput
+  price: DecimalNullableFilter
+  quantity: IntNullableFilter
+}
+
+input OrderItemWhereUniqueInput {
+  id: Float!
+}
+
+input OrderListRelationFilter {
+  every: OrderWhereInput
+  none: OrderWhereInput
+  some: OrderWhereInput
+}
+
+input OrderOrderByInput {
+  coupon_id: SortOrder
+  deliveryTime: SortOrder
+  delivery_address_id: SortOrder
+  discountAmount: SortOrder
+  finalAmount: SortOrder
+  id: SortOrder
+  isDelivered: SortOrder
+  isPaid: SortOrder
+  orderDate: SortOrder
+  orderType: SortOrder
+  payment_method_id: SortOrder
+  restaurant_id: SortOrder
+  scheduledDeliveryTime: SortOrder
+  specialInstructions: SortOrder
+  status: SortOrder
+  totalAmount: SortOrder
+  user_id: SortOrder
+}
+
+input OrderUpdateInput {
+  coupons: CouponWhereUniqueInput
+  deliveryTime: DateTime
+  discountAmount: Float
+  finalAmount: Float
+  isDelivered: Boolean
+  isPaid: Boolean
+  orderItems: OrderItemUpdateManyWithoutOrdersInput
+  orderType: String
+  paymentMethods: PaymentMethodWhereUniqueInput
+  payments: PaymentUpdateManyWithoutOrdersInput
+  restaurants: RestaurantWhereUniqueInput
+  scheduledDeliveryTime: DateTime
+  specialInstructions: String
+  status: String
+  totalAmount: Float
+  transactions: TransactionUpdateManyWithoutOrdersInput
+  userAddresses: UserAddressWhereUniqueInput
+  userModels: UserModelWhereUniqueInput
+}
+
+input OrderUpdateManyWithoutCouponsInput {
+  connect: [OrderWhereUniqueInput!]
+  disconnect: [OrderWhereUniqueInput!]
+  set: [OrderWhereUniqueInput!]
+}
+
+input OrderUpdateManyWithoutPaymentMethodsInput {
+  connect: [OrderWhereUniqueInput!]
+  disconnect: [OrderWhereUniqueInput!]
+  set: [OrderWhereUniqueInput!]
+}
+
+input OrderUpdateManyWithoutRestaurantsInput {
+  connect: [OrderWhereUniqueInput!]
+  disconnect: [OrderWhereUniqueInput!]
+  set: [OrderWhereUniqueInput!]
+}
+
+input OrderUpdateManyWithoutUserAddressesInput {
+  connect: [OrderWhereUniqueInput!]
+  disconnect: [OrderWhereUniqueInput!]
+  set: [OrderWhereUniqueInput!]
+}
+
+input OrderUpdateManyWithoutUserModelsInput {
+  connect: [OrderWhereUniqueInput!]
+  disconnect: [OrderWhereUniqueInput!]
+  set: [OrderWhereUniqueInput!]
+}
+
+input OrderWhereInput {
+  coupons: CouponWhereUniqueInput
+  deliveryTime: DateTimeNullableFilter
+  discountAmount: DecimalNullableFilter
+  finalAmount: DecimalNullableFilter
+  id: IntFilter
+  isDelivered: BooleanNullableFilter
+  isPaid: BooleanNullableFilter
+  orderDate: DateTimeNullableFilter
+  orderItems: OrderItemListRelationFilter
+  orderType: StringNullableFilter
+  paymentMethods: PaymentMethodWhereUniqueInput
+  payments: PaymentListRelationFilter
+  restaurants: RestaurantWhereUniqueInput
+  scheduledDeliveryTime: DateTimeNullableFilter
+  specialInstructions: StringNullableFilter
+  status: StringNullableFilter
+  totalAmount: DecimalNullableFilter
+  transactions: TransactionListRelationFilter
+  userAddresses: UserAddressWhereUniqueInput
+  userModels: UserModelWhereUniqueInput
+}
+
+input OrderWhereUniqueInput {
+  id: Float!
+}
+
+type Payment {
+  id: Float!
+  orders: Order
+  paymentAmount: Float
+  paymentDate: DateTime
+  paymentMethods: PaymentMethod
+  paymentStatus: String
+  transactionId: String
+}
+
+input PaymentCreateInput {
+  orders: OrderWhereUniqueInput!
+  paymentAmount: Float
+  paymentDate: DateTime
+  paymentMethods: PaymentMethodWhereUniqueInput!
+  paymentStatus: String
+  transactionId: String
+}
+
+input PaymentCreateNestedManyWithoutOrdersInput {
+  connect: [PaymentWhereUniqueInput!]
+}
+
+input PaymentCreateNestedManyWithoutPaymentMethodsInput {
+  connect: [PaymentWhereUniqueInput!]
+}
+
+input PaymentListRelationFilter {
+  every: PaymentWhereInput
+  none: PaymentWhereInput
+  some: PaymentWhereInput
+}
+
+type PaymentMethod {
+  id: Float!
+  methodDetails: String
+  methodName: String
+  orders(orderBy: [OrderOrderByInput!], skip: Float, take: Float, where: OrderWhereInput): [Order!]!
+  payments(orderBy: [PaymentOrderByInput!], skip: Float, take: Float, where: PaymentWhereInput): [Payment!]!
+}
+
+input PaymentMethodCreateInput {
+  methodDetails: String
+  methodName: String
+  orders: OrderCreateNestedManyWithoutPaymentMethodsInput
+  payments: PaymentCreateNestedManyWithoutPaymentMethodsInput
+}
+
+input PaymentMethodOrderByInput {
+  id: SortOrder
+  methodDetails: SortOrder
+  methodName: SortOrder
+}
+
+input PaymentMethodUpdateInput {
+  methodDetails: String
+  methodName: String
+  orders: OrderUpdateManyWithoutPaymentMethodsInput
+  payments: PaymentUpdateManyWithoutPaymentMethodsInput
+}
+
+input PaymentMethodWhereInput {
+  id: IntFilter
+  methodDetails: StringNullableFilter
+  methodName: StringNullableFilter
+  orders: OrderListRelationFilter
+  payments: PaymentListRelationFilter
+}
+
+input PaymentMethodWhereUniqueInput {
+  id: Float!
+}
+
+input PaymentOrderByInput {
+  id: SortOrder
+  order_id: SortOrder
+  paymentAmount: SortOrder
+  paymentDate: SortOrder
+  paymentStatus: SortOrder
+  payment_method_id: SortOrder
+  transactionId: SortOrder
+}
+
+input PaymentUpdateInput {
+  orders: OrderWhereUniqueInput
+  paymentAmount: Float
+  paymentDate: DateTime
+  paymentMethods: PaymentMethodWhereUniqueInput
+  paymentStatus: String
+  transactionId: String
+}
+
+input PaymentUpdateManyWithoutOrdersInput {
+  connect: [PaymentWhereUniqueInput!]
+  disconnect: [PaymentWhereUniqueInput!]
+  set: [PaymentWhereUniqueInput!]
+}
+
+input PaymentUpdateManyWithoutPaymentMethodsInput {
+  connect: [PaymentWhereUniqueInput!]
+  disconnect: [PaymentWhereUniqueInput!]
+  set: [PaymentWhereUniqueInput!]
+}
+
+input PaymentWhereInput {
+  id: IntFilter
+  orders: OrderWhereUniqueInput
+  paymentAmount: DecimalNullableFilter
+  paymentDate: DateTimeNullableFilter
+  paymentMethods: PaymentMethodWhereUniqueInput
+  paymentStatus: StringNullableFilter
+  transactionId: StringNullableFilter
+}
+
+input PaymentWhereUniqueInput {
+  id: Float!
+}
+
+type Query {
+  _accessLogsMeta(where: AccessLogWhereInput): MetaQueryPayload!
+  _couponRedemptionsMeta(where: CouponRedemptionWhereInput): MetaQueryPayload!
+  _couponsMeta(where: CouponWhereInput): MetaQueryPayload!
+  _customerPreferencesMeta(where: CustomerPreferenceWhereInput): MetaQueryPayload!
+  _customerSubscriptionsMeta(where: CustomerSubscriptionWhereInput): MetaQueryPayload!
+  _errorLogsMeta(where: ErrorLogWhereInput): MetaQueryPayload!
+  _favoriteMenuItemsMeta(where: FavoriteMenuItemWhereInput): MetaQueryPayload!
+  _favoriteRestaurantsMeta(where: FavoriteRestaurantWhereInput): MetaQueryPayload!
+  _favoritesMeta(where: FavoriteWhereInput): MetaQueryPayload!
+  _geoLocationsMeta(where: GeoLocationWhereInput): MetaQueryPayload!
+  _geofencesMeta(where: GeofenceWhereInput): MetaQueryPayload!
+  _hashtagsMeta(where: HashtagWhereInput): MetaQueryPayload!
+  _menuItemCategoriesMeta(where: MenuItemCategoryWhereInput): MetaQueryPayload!
+  _menuItemsMeta(where: MenuItemWhereInput): MetaQueryPayload!
+  _menusMeta(where: MenuWhereInput): MetaQueryPayload!
+  _notificationSettingsMeta(where: NotificationSettingWhereInput): MetaQueryPayload!
+  _notificationsMeta(where: NotificationWhereInput): MetaQueryPayload!
+  _orderItemsMeta(where: OrderItemWhereInput): MetaQueryPayload!
+  _ordersMeta(where: OrderWhereInput): MetaQueryPayload!
+  _paymentMethodsMeta(where: PaymentMethodWhereInput): MetaQueryPayload!
+  _paymentsMeta(where: PaymentWhereInput): MetaQueryPayload!
+  _reportsMeta(where: ReportWhereInput): MetaQueryPayload!
+  _reservationsMeta(where: ReservationWhereInput): MetaQueryPayload!
+  _restaurantDetailsMeta(where: RestaurantDetailWhereInput): MetaQueryPayload!
+  _restaurantsMeta(where: RestaurantWhereInput): MetaQueryPayload!
+  _reviewRatingsMeta(where: ReviewRatingWhereInput): MetaQueryPayload!
+  _reviewsMeta(where: ReviewWhereInput): MetaQueryPayload!
+  _rewardsMeta(where: RewardWhereInput): MetaQueryPayload!
+  _subscriptionPlansMeta(where: SubscriptionPlanWhereInput): MetaQueryPayload!
+  _subscriptionsMeta(where: SubscriptionWhereInput): MetaQueryPayload!
+  _systemSettingsMeta(where: SystemSettingWhereInput): MetaQueryPayload!
+  _transactionStatusesMeta(where: TransactionStatusWhereInput): MetaQueryPayload!
+  _transactionsMeta(where: TransactionWhereInput): MetaQueryPayload!
+  _userAddressesMeta(where: UserAddressWhereInput): MetaQueryPayload!
+  _userModelsMeta(where: UserModelWhereInput): MetaQueryPayload!
+  _usersMeta(where: UserWhereInput): MetaQueryPayload!
+  _wishlistsMeta(where: WishlistWhereInput): MetaQueryPayload!
+  accessLog(where: AccessLogWhereUniqueInput!): AccessLog
+  accessLogs(orderBy: [AccessLogOrderByInput!], skip: Float, take: Float, where: AccessLogWhereInput): [AccessLog!]!
+  coupon(where: CouponWhereUniqueInput!): Coupon
+  couponRedemption(where: CouponRedemptionWhereUniqueInput!): CouponRedemption
+  couponRedemptions(orderBy: [CouponRedemptionOrderByInput!], skip: Float, take: Float, where: CouponRedemptionWhereInput): [CouponRedemption!]!
+  coupons(orderBy: [CouponOrderByInput!], skip: Float, take: Float, where: CouponWhereInput): [Coupon!]!
+  customerPreference(where: CustomerPreferenceWhereUniqueInput!): CustomerPreference
+  customerPreferences(orderBy: [CustomerPreferenceOrderByInput!], skip: Float, take: Float, where: CustomerPreferenceWhereInput): [CustomerPreference!]!
+  customerSubscription(where: CustomerSubscriptionWhereUniqueInput!): CustomerSubscription
+  customerSubscriptions(orderBy: [CustomerSubscriptionOrderByInput!], skip: Float, take: Float, where: CustomerSubscriptionWhereInput): [CustomerSubscription!]!
+  errorLog(where: ErrorLogWhereUniqueInput!): ErrorLog
+  errorLogs(orderBy: [ErrorLogOrderByInput!], skip: Float, take: Float, where: ErrorLogWhereInput): [ErrorLog!]!
+  favorite(where: FavoriteWhereUniqueInput!): Favorite
+  favoriteMenuItem(where: FavoriteMenuItemWhereUniqueInput!): FavoriteMenuItem
+  favoriteMenuItems(orderBy: [FavoriteMenuItemOrderByInput!], skip: Float, take: Float, where: FavoriteMenuItemWhereInput): [FavoriteMenuItem!]!
+  favoriteRestaurant(where: FavoriteRestaurantWhereUniqueInput!): FavoriteRestaurant
+  favoriteRestaurants(orderBy: [FavoriteRestaurantOrderByInput!], skip: Float, take: Float, where: FavoriteRestaurantWhereInput): [FavoriteRestaurant!]!
+  favorites(orderBy: [FavoriteOrderByInput!], skip: Float, take: Float, where: FavoriteWhereInput): [Favorite!]!
+  geoLocation(where: GeoLocationWhereUniqueInput!): GeoLocation
+  geoLocations(orderBy: [GeoLocationOrderByInput!], skip: Float, take: Float, where: GeoLocationWhereInput): [GeoLocation!]!
+  geofence(where: GeofenceWhereUniqueInput!): Geofence
+  geofences(orderBy: [GeofenceOrderByInput!], skip: Float, take: Float, where: GeofenceWhereInput): [Geofence!]!
+  hashtag(where: HashtagWhereUniqueInput!): Hashtag
+  hashtags(orderBy: [HashtagOrderByInput!], skip: Float, take: Float, where: HashtagWhereInput): [Hashtag!]!
+  menu(where: MenuWhereUniqueInput!): Menu
+  menuItem(where: MenuItemWhereUniqueInput!): MenuItem
+  menuItemCategories(orderBy: [MenuItemCategoryOrderByInput!], skip: Float, take: Float, where: MenuItemCategoryWhereInput): [MenuItemCategory!]!
+  menuItemCategory(where: MenuItemCategoryWhereUniqueInput!): MenuItemCategory
+  menuItems(orderBy: [MenuItemOrderByInput!], skip: Float, take: Float, where: MenuItemWhereInput): [MenuItem!]!
+  menus(orderBy: [MenuOrderByInput!], skip: Float, take: Float, where: MenuWhereInput): [Menu!]!
+  notification(where: NotificationWhereUniqueInput!): Notification
+  notificationSetting(where: NotificationSettingWhereUniqueInput!): NotificationSetting
+  notificationSettings(orderBy: [NotificationSettingOrderByInput!], skip: Float, take: Float, where: NotificationSettingWhereInput): [NotificationSetting!]!
+  notifications(orderBy: [NotificationOrderByInput!], skip: Float, take: Float, where: NotificationWhereInput): [Notification!]!
+  order(where: OrderWhereUniqueInput!): Order
+  orderItem(where: OrderItemWhereUniqueInput!): OrderItem
+  orderItems(orderBy: [OrderItemOrderByInput!], skip: Float, take: Float, where: OrderItemWhereInput): [OrderItem!]!
+  orders(orderBy: [OrderOrderByInput!], skip: Float, take: Float, where: OrderWhereInput): [Order!]!
+  payment(where: PaymentWhereUniqueInput!): Payment
+  paymentMethod(where: PaymentMethodWhereUniqueInput!): PaymentMethod
+  paymentMethods(orderBy: [PaymentMethodOrderByInput!], skip: Float, take: Float, where: PaymentMethodWhereInput): [PaymentMethod!]!
+  payments(orderBy: [PaymentOrderByInput!], skip: Float, take: Float, where: PaymentWhereInput): [Payment!]!
+  report(where: ReportWhereUniqueInput!): Report
+  reports(orderBy: [ReportOrderByInput!], skip: Float, take: Float, where: ReportWhereInput): [Report!]!
+  reservation(where: ReservationWhereUniqueInput!): Reservation
+  reservations(orderBy: [ReservationOrderByInput!], skip: Float, take: Float, where: ReservationWhereInput): [Reservation!]!
+  restaurant(where: RestaurantWhereUniqueInput!): Restaurant
+  restaurantDetail(where: RestaurantDetailWhereUniqueInput!): RestaurantDetail
+  restaurantDetails(orderBy: [RestaurantDetailOrderByInput!], skip: Float, take: Float, where: RestaurantDetailWhereInput): [RestaurantDetail!]!
+  restaurants(orderBy: [RestaurantOrderByInput!], skip: Float, take: Float, where: RestaurantWhereInput): [Restaurant!]!
+  review(where: ReviewWhereUniqueInput!): Review
+  reviewRating(where: ReviewRatingWhereUniqueInput!): ReviewRating
+  reviewRatings(orderBy: [ReviewRatingOrderByInput!], skip: Float, take: Float, where: ReviewRatingWhereInput): [ReviewRating!]!
+  reviews(orderBy: [ReviewOrderByInput!], skip: Float, take: Float, where: ReviewWhereInput): [Review!]!
+  reward(where: RewardWhereUniqueInput!): Reward
+  rewards(orderBy: [RewardOrderByInput!], skip: Float, take: Float, where: RewardWhereInput): [Reward!]!
+  subscription(where: SubscriptionWhereUniqueInput!): Subscription
+  subscriptionPlan(where: SubscriptionPlanWhereUniqueInput!): SubscriptionPlan
+  subscriptionPlans(orderBy: [SubscriptionPlanOrderByInput!], skip: Float, take: Float, where: SubscriptionPlanWhereInput): [SubscriptionPlan!]!
+  subscriptions(orderBy: [SubscriptionOrderByInput!], skip: Float, take: Float, where: SubscriptionWhereInput): [Subscription!]!
+  systemSetting(where: SystemSettingWhereUniqueInput!): SystemSetting
+  systemSettings(orderBy: [SystemSettingOrderByInput!], skip: Float, take: Float, where: SystemSettingWhereInput): [SystemSetting!]!
+  transaction(where: TransactionWhereUniqueInput!): Transaction
+  transactionStatus(where: TransactionStatusWhereUniqueInput!): TransactionStatus
+  transactionStatuses(orderBy: [TransactionStatusOrderByInput!], skip: Float, take: Float, where: TransactionStatusWhereInput): [TransactionStatus!]!
+  transactions(orderBy: [TransactionOrderByInput!], skip: Float, take: Float, where: TransactionWhereInput): [Transaction!]!
+  user(where: UserWhereUniqueInput!): User
+  userAddress(where: UserAddressWhereUniqueInput!): UserAddress
+  userAddresses(orderBy: [UserAddressOrderByInput!], skip: Float, take: Float, where: UserAddressWhereInput): [UserAddress!]!
+  userInfo: UserInfo!
+  userModel(where: UserModelWhereUniqueInput!): UserModel
+  userModels(orderBy: [UserModelOrderByInput!], skip: Float, take: Float, where: UserModelWhereInput): [UserModel!]!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+  wishlist(where: WishlistWhereUniqueInput!): Wishlist
+  wishlists(orderBy: [WishlistOrderByInput!], skip: Float, take: Float, where: WishlistWhereInput): [Wishlist!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+type Report {
+  createdAt: DateTime
+  id: Float!
+  reportData: JSON
+  reportType: String
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input ReportCreateInput {
+  reportData: JSON
+  reportType: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input ReportCreateNestedManyWithoutUserModelsInput {
+  connect: [ReportWhereUniqueInput!]
+}
+
+input ReportListRelationFilter {
+  every: ReportWhereInput
+  none: ReportWhereInput
+  some: ReportWhereInput
+}
+
+input ReportOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  reportData: SortOrder
+  reportType: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+input ReportUpdateInput {
+  reportData: JSON
+  reportType: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input ReportUpdateManyWithoutUserModelsInput {
+  connect: [ReportWhereUniqueInput!]
+  disconnect: [ReportWhereUniqueInput!]
+  set: [ReportWhereUniqueInput!]
+}
+
+input ReportWhereInput {
+  createdAt: DateTimeNullableFilter
+  id: IntFilter
+  reportData: JsonFilter
+  reportType: StringNullableFilter
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input ReportWhereUniqueInput {
+  id: Float!
+}
+
+type Reservation {
+  createdAt: DateTime
+  id: Float!
+  partySize: Float
+  reservationDate: DateTime
+  reservationTime: DateTime
+  restaurants: Restaurant
+  status: String
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input ReservationCreateInput {
+  createdAt: DateTime
+  partySize: Float
+  reservationDate: DateTime
+  reservationTime: DateTime
+  restaurants: RestaurantWhereUniqueInput
+  status: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input ReservationCreateNestedManyWithoutRestaurantsInput {
+  connect: [ReservationWhereUniqueInput!]
+}
+
+input ReservationCreateNestedManyWithoutUserModelsInput {
+  connect: [ReservationWhereUniqueInput!]
+}
+
+input ReservationListRelationFilter {
+  every: ReservationWhereInput
+  none: ReservationWhereInput
+  some: ReservationWhereInput
+}
+
+input ReservationOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  partySize: SortOrder
+  reservationDate: SortOrder
+  reservationTime: SortOrder
+  restaurant_id: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+input ReservationUpdateInput {
+  createdAt: DateTime
+  partySize: Float
+  reservationDate: DateTime
+  reservationTime: DateTime
+  restaurants: RestaurantWhereUniqueInput
+  status: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input ReservationUpdateManyWithoutRestaurantsInput {
+  connect: [ReservationWhereUniqueInput!]
+  disconnect: [ReservationWhereUniqueInput!]
+  set: [ReservationWhereUniqueInput!]
+}
+
+input ReservationUpdateManyWithoutUserModelsInput {
+  connect: [ReservationWhereUniqueInput!]
+  disconnect: [ReservationWhereUniqueInput!]
+  set: [ReservationWhereUniqueInput!]
+}
+
+input ReservationWhereInput {
+  createdAt: DateTimeNullableFilter
+  id: IntFilter
+  partySize: IntNullableFilter
+  reservationDate: DateTimeNullableFilter
+  reservationTime: DateTimeNullableFilter
+  restaurants: RestaurantWhereUniqueInput
+  status: StringNullableFilter
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input ReservationWhereUniqueInput {
+  id: Float!
+}
+
+type Restaurant {
+  address: String
+  averageCost: Float
+  closingHours: String
+  createdAt: DateTime
+  email: String
+  favoriteRestaurants(orderBy: [FavoriteRestaurantOrderByInput!], skip: Float, take: Float, where: FavoriteRestaurantWhereInput): [FavoriteRestaurant!]!
+  filterTag: String
+  hashtags: String
+  id: Float!
+  isActive: Boolean
+  menus(orderBy: [MenuOrderByInput!], skip: Float, take: Float, where: MenuWhereInput): [Menu!]!
+  name: String
+  openingHours: String
+  orders(orderBy: [OrderOrderByInput!], skip: Float, take: Float, where: OrderWhereInput): [Order!]!
+  phoneNumber: String
+  reservations(orderBy: [ReservationOrderByInput!], skip: Float, take: Float, where: ReservationWhereInput): [Reservation!]!
+  restaurantDetails(orderBy: [RestaurantDetailOrderByInput!], skip: Float, take: Float, where: RestaurantDetailWhereInput): [RestaurantDetail!]!
+  reviews(orderBy: [ReviewOrderByInput!], skip: Float, take: Float, where: ReviewWhereInput): [Review!]!
+  shareSlug: String
+  updatedAt: DateTime
+}
+
+input RestaurantCreateInput {
+  address: String
+  averageCost: Float
+  closingHours: String
+  createdAt: DateTime
+  email: String
+  favoriteRestaurants: FavoriteRestaurantCreateNestedManyWithoutRestaurantsInput
+  filterTag: String
+  hashtags: String
+  isActive: Boolean
+  menus: MenuCreateNestedManyWithoutRestaurantsInput
+  name: String
+  openingHours: String
+  orders: OrderCreateNestedManyWithoutRestaurantsInput
+  phoneNumber: String
+  reservations: ReservationCreateNestedManyWithoutRestaurantsInput
+  restaurantDetails: RestaurantDetailCreateNestedManyWithoutRestaurantsInput
+  reviews: ReviewCreateNestedManyWithoutRestaurantsInput
+  shareSlug: String
+  updatedAt: DateTime
+}
+
+type RestaurantDetail {
+  deliveryCharge: Float
+  deliveryTime: String
+  description: String
+  id: Float!
+  imageUrl: String
+  minOrderValue: Float
+  rating: Float
+  restaurants: Restaurant
+  reviewCount: Float
+}
+
+input RestaurantDetailCreateInput {
+  deliveryCharge: Float
+  deliveryTime: String
+  description: String
+  imageUrl: String
+  minOrderValue: Float
+  rating: Float
+  restaurants: RestaurantWhereUniqueInput
+  reviewCount: Float
+}
+
+input RestaurantDetailCreateNestedManyWithoutRestaurantsInput {
+  connect: [RestaurantDetailWhereUniqueInput!]
+}
+
+input RestaurantDetailListRelationFilter {
+  every: RestaurantDetailWhereInput
+  none: RestaurantDetailWhereInput
+  some: RestaurantDetailWhereInput
+}
+
+input RestaurantDetailOrderByInput {
+  deliveryCharge: SortOrder
+  deliveryTime: SortOrder
+  description: SortOrder
+  id: SortOrder
+  imageUrl: SortOrder
+  minOrderValue: SortOrder
+  rating: SortOrder
+  restaurant_id: SortOrder
+  reviewCount: SortOrder
+}
+
+input RestaurantDetailUpdateInput {
+  deliveryCharge: Float
+  deliveryTime: String
+  description: String
+  imageUrl: String
+  minOrderValue: Float
+  rating: Float
+  restaurants: RestaurantWhereUniqueInput
+  reviewCount: Float
+}
+
+input RestaurantDetailUpdateManyWithoutRestaurantsInput {
+  connect: [RestaurantDetailWhereUniqueInput!]
+  disconnect: [RestaurantDetailWhereUniqueInput!]
+  set: [RestaurantDetailWhereUniqueInput!]
+}
+
+input RestaurantDetailWhereInput {
+  deliveryCharge: DecimalNullableFilter
+  deliveryTime: StringNullableFilter
+  description: StringNullableFilter
+  id: IntFilter
+  imageUrl: StringNullableFilter
+  minOrderValue: DecimalNullableFilter
+  rating: DecimalNullableFilter
+  restaurants: RestaurantWhereUniqueInput
+  reviewCount: IntNullableFilter
+}
+
+input RestaurantDetailWhereUniqueInput {
+  id: Float!
+}
+
+input RestaurantOrderByInput {
+  address: SortOrder
+  averageCost: SortOrder
+  closingHours: SortOrder
+  createdAt: SortOrder
+  email: SortOrder
+  filterTag: SortOrder
+  hashtags: SortOrder
+  id: SortOrder
+  isActive: SortOrder
+  name: SortOrder
+  openingHours: SortOrder
+  phoneNumber: SortOrder
+  shareSlug: SortOrder
+  updatedAt: SortOrder
+}
+
+input RestaurantUpdateInput {
+  address: String
+  averageCost: Float
+  closingHours: String
+  createdAt: DateTime
+  email: String
+  favoriteRestaurants: FavoriteRestaurantUpdateManyWithoutRestaurantsInput
+  filterTag: String
+  hashtags: String
+  isActive: Boolean
+  menus: MenuUpdateManyWithoutRestaurantsInput
+  name: String
+  openingHours: String
+  orders: OrderUpdateManyWithoutRestaurantsInput
+  phoneNumber: String
+  reservations: ReservationUpdateManyWithoutRestaurantsInput
+  restaurantDetails: RestaurantDetailUpdateManyWithoutRestaurantsInput
+  reviews: ReviewUpdateManyWithoutRestaurantsInput
+  shareSlug: String
+  updatedAt: DateTime
+}
+
+input RestaurantWhereInput {
+  address: StringNullableFilter
+  averageCost: DecimalNullableFilter
+  closingHours: StringNullableFilter
+  createdAt: DateTimeNullableFilter
+  email: StringNullableFilter
+  favoriteRestaurants: FavoriteRestaurantListRelationFilter
+  filterTag: StringNullableFilter
+  hashtags: StringNullableFilter
+  id: IntFilter
+  isActive: BooleanNullableFilter
+  menus: MenuListRelationFilter
+  name: StringNullableFilter
+  openingHours: StringNullableFilter
+  orders: OrderListRelationFilter
+  phoneNumber: StringNullableFilter
+  reservations: ReservationListRelationFilter
+  restaurantDetails: RestaurantDetailListRelationFilter
+  reviews: ReviewListRelationFilter
+  shareSlug: StringNullableFilter
+  updatedAt: DateTimeNullableFilter
+}
+
+input RestaurantWhereUniqueInput {
+  id: Float!
+}
+
+type Review {
+  body: String
+  createdAt: DateTime
+  id: Float!
+  rating: Float
+  restaurants: Restaurant
+  reviewRatings(orderBy: [ReviewRatingOrderByInput!], skip: Float, take: Float, where: ReviewRatingWhereInput): [ReviewRating!]!
+  title: String
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input ReviewCreateInput {
+  body: String
+  createdAt: DateTime
+  rating: Float
+  restaurants: RestaurantWhereUniqueInput
+  reviewRatings: ReviewRatingCreateNestedManyWithoutReviewsInput
+  title: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input ReviewCreateNestedManyWithoutRestaurantsInput {
+  connect: [ReviewWhereUniqueInput!]
+}
+
+input ReviewCreateNestedManyWithoutUserModelsInput {
+  connect: [ReviewWhereUniqueInput!]
+}
+
+input ReviewListRelationFilter {
+  every: ReviewWhereInput
+  none: ReviewWhereInput
+  some: ReviewWhereInput
+}
+
+input ReviewOrderByInput {
+  body: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  rating: SortOrder
+  restaurant_id: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+type ReviewRating {
+  cleanliness: Float
+  foodQuality: Float
+  id: Float!
+  reviews: Review
+  service: Float
+  valueForMoney: Float
+}
+
+input ReviewRatingCreateInput {
+  cleanliness: Float
+  foodQuality: Float
+  reviews: ReviewWhereUniqueInput
+  service: Float
+  valueForMoney: Float
+}
+
+input ReviewRatingCreateNestedManyWithoutReviewsInput {
+  connect: [ReviewRatingWhereUniqueInput!]
+}
+
+input ReviewRatingListRelationFilter {
+  every: ReviewRatingWhereInput
+  none: ReviewRatingWhereInput
+  some: ReviewRatingWhereInput
+}
+
+input ReviewRatingOrderByInput {
+  cleanliness: SortOrder
+  foodQuality: SortOrder
+  id: SortOrder
+  review_id: SortOrder
+  service: SortOrder
+  valueForMoney: SortOrder
+}
+
+input ReviewRatingUpdateInput {
+  cleanliness: Float
+  foodQuality: Float
+  reviews: ReviewWhereUniqueInput
+  service: Float
+  valueForMoney: Float
+}
+
+input ReviewRatingUpdateManyWithoutReviewsInput {
+  connect: [ReviewRatingWhereUniqueInput!]
+  disconnect: [ReviewRatingWhereUniqueInput!]
+  set: [ReviewRatingWhereUniqueInput!]
+}
+
+input ReviewRatingWhereInput {
+  cleanliness: DecimalNullableFilter
+  foodQuality: DecimalNullableFilter
+  id: IntFilter
+  reviews: ReviewWhereUniqueInput
+  service: DecimalNullableFilter
+  valueForMoney: DecimalNullableFilter
+}
+
+input ReviewRatingWhereUniqueInput {
+  id: Float!
+}
+
+input ReviewUpdateInput {
+  body: String
+  createdAt: DateTime
+  rating: Float
+  restaurants: RestaurantWhereUniqueInput
+  reviewRatings: ReviewRatingUpdateManyWithoutReviewsInput
+  title: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input ReviewUpdateManyWithoutRestaurantsInput {
+  connect: [ReviewWhereUniqueInput!]
+  disconnect: [ReviewWhereUniqueInput!]
+  set: [ReviewWhereUniqueInput!]
+}
+
+input ReviewUpdateManyWithoutUserModelsInput {
+  connect: [ReviewWhereUniqueInput!]
+  disconnect: [ReviewWhereUniqueInput!]
+  set: [ReviewWhereUniqueInput!]
+}
+
+input ReviewWhereInput {
+  body: StringNullableFilter
+  createdAt: DateTimeNullableFilter
+  id: IntFilter
+  rating: DecimalNullableFilter
+  restaurants: RestaurantWhereUniqueInput
+  reviewRatings: ReviewRatingListRelationFilter
+  title: StringNullableFilter
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input ReviewWhereUniqueInput {
+  id: Float!
+}
+
+type Reward {
+  createdAt: DateTime
+  expirationDate: DateTime
+  id: Float!
+  points: Float
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input RewardCreateInput {
+  expirationDate: DateTime
+  points: Float
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input RewardCreateNestedManyWithoutUserModelsInput {
+  connect: [RewardWhereUniqueInput!]
+}
+
+input RewardListRelationFilter {
+  every: RewardWhereInput
+  none: RewardWhereInput
+  some: RewardWhereInput
+}
+
+input RewardOrderByInput {
+  createdAt: SortOrder
+  expirationDate: SortOrder
+  id: SortOrder
+  points: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+input RewardUpdateInput {
+  expirationDate: DateTime
+  points: Float
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input RewardUpdateManyWithoutUserModelsInput {
+  connect: [RewardWhereUniqueInput!]
+  disconnect: [RewardWhereUniqueInput!]
+  set: [RewardWhereUniqueInput!]
+}
+
+input RewardWhereInput {
+  createdAt: DateTimeNullableFilter
+  expirationDate: DateTimeNullableFilter
+  id: IntFilter
+  points: IntNullableFilter
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input RewardWhereUniqueInput {
+  id: Float!
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type Subscription {
+  autoRenew: Boolean!
+  createdAt: DateTime!
+  customerSubscriptions(orderBy: [CustomerSubscriptionOrderByInput!], skip: Float, take: Float, where: CustomerSubscriptionWhereInput): [CustomerSubscription!]!
+  endDate: DateTime
+  id: Float!
+  paymentStatus: String!
+  startDate: DateTime!
+  status: String!
+  subscriptionPlans: SubscriptionPlan
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input SubscriptionCreateInput {
+  autoRenew: Boolean!
+  customerSubscriptions: CustomerSubscriptionCreateNestedManyWithoutSubscriptionsInput
+  endDate: DateTime
+  paymentStatus: String!
+  startDate: DateTime!
+  status: String!
+  subscriptionPlans: SubscriptionPlanWhereUniqueInput!
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput!
+}
+
+input SubscriptionCreateNestedManyWithoutSubscriptionPlansInput {
+  connect: [SubscriptionWhereUniqueInput!]
+}
+
+input SubscriptionCreateNestedManyWithoutUserModelsInput {
+  connect: [SubscriptionWhereUniqueInput!]
+}
+
+input SubscriptionListRelationFilter {
+  every: SubscriptionWhereInput
+  none: SubscriptionWhereInput
+  some: SubscriptionWhereInput
+}
+
+input SubscriptionOrderByInput {
+  autoRenew: SortOrder
+  createdAt: SortOrder
+  endDate: SortOrder
+  id: SortOrder
+  paymentStatus: SortOrder
+  plan_id: SortOrder
+  startDate: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+type SubscriptionPlan {
+  createdAt: DateTime!
+  customerSubscriptions(orderBy: [CustomerSubscriptionOrderByInput!], skip: Float, take: Float, where: CustomerSubscriptionWhereInput): [CustomerSubscription!]!
+  description: String
+  duration: Float!
+  durationUnit: String!
+  id: Float!
+  isActive: Boolean!
+  name: String!
+  price: Float!
+  subscriptions(orderBy: [SubscriptionOrderByInput!], skip: Float, take: Float, where: SubscriptionWhereInput): [Subscription!]!
+  updatedAt: DateTime
+}
+
+input SubscriptionPlanCreateInput {
+  customerSubscriptions: CustomerSubscriptionCreateNestedManyWithoutSubscriptionPlansInput
+  description: String
+  duration: Float!
+  durationUnit: String!
+  isActive: Boolean!
+  name: String!
+  price: Float!
+  subscriptions: SubscriptionCreateNestedManyWithoutSubscriptionPlansInput
+  updatedAt: DateTime
+}
+
+input SubscriptionPlanOrderByInput {
+  createdAt: SortOrder
+  description: SortOrder
+  duration: SortOrder
+  durationUnit: SortOrder
+  id: SortOrder
+  isActive: SortOrder
+  name: SortOrder
+  price: SortOrder
+  updatedAt: SortOrder
+}
+
+input SubscriptionPlanUpdateInput {
+  customerSubscriptions: CustomerSubscriptionUpdateManyWithoutSubscriptionPlansInput
+  description: String
+  duration: Float
+  durationUnit: String
+  isActive: Boolean
+  name: String
+  price: Float
+  subscriptions: SubscriptionUpdateManyWithoutSubscriptionPlansInput
+  updatedAt: DateTime
+}
+
+input SubscriptionPlanWhereInput {
+  createdAt: DateTimeFilter
+  customerSubscriptions: CustomerSubscriptionListRelationFilter
+  description: StringNullableFilter
+  duration: IntFilter
+  durationUnit: StringFilter
+  id: IntFilter
+  isActive: BooleanFilter
+  name: StringFilter
+  price: DecimalFilter
+  subscriptions: SubscriptionListRelationFilter
+  updatedAt: DateTimeNullableFilter
+}
+
+input SubscriptionPlanWhereUniqueInput {
+  id: Float!
+}
+
+input SubscriptionUpdateInput {
+  autoRenew: Boolean
+  customerSubscriptions: CustomerSubscriptionUpdateManyWithoutSubscriptionsInput
+  endDate: DateTime
+  paymentStatus: String
+  startDate: DateTime
+  status: String
+  subscriptionPlans: SubscriptionPlanWhereUniqueInput
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input SubscriptionUpdateManyWithoutSubscriptionPlansInput {
+  connect: [SubscriptionWhereUniqueInput!]
+  disconnect: [SubscriptionWhereUniqueInput!]
+  set: [SubscriptionWhereUniqueInput!]
+}
+
+input SubscriptionUpdateManyWithoutUserModelsInput {
+  connect: [SubscriptionWhereUniqueInput!]
+  disconnect: [SubscriptionWhereUniqueInput!]
+  set: [SubscriptionWhereUniqueInput!]
+}
+
+input SubscriptionWhereInput {
+  autoRenew: BooleanFilter
+  createdAt: DateTimeFilter
+  customerSubscriptions: CustomerSubscriptionListRelationFilter
+  endDate: DateTimeNullableFilter
+  id: IntFilter
+  paymentStatus: StringFilter
+  startDate: DateTimeFilter
+  status: StringFilter
+  subscriptionPlans: SubscriptionPlanWhereUniqueInput
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input SubscriptionWhereUniqueInput {
+  id: Float!
+}
+
+type SystemSetting {
+  createdAt: DateTime
+  description: String
+  id: Float!
+  settingKey: String
+  settingValue: String
+  updatedAt: DateTime
+}
+
+input SystemSettingCreateInput {
+  createdAt: DateTime
+  description: String
+  settingKey: String
+  settingValue: String
+  updatedAt: DateTime
+}
+
+input SystemSettingOrderByInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  settingKey: SortOrder
+  settingValue: SortOrder
+  updatedAt: SortOrder
+}
+
+input SystemSettingUpdateInput {
+  createdAt: DateTime
+  description: String
+  settingKey: String
+  settingValue: String
+  updatedAt: DateTime
+}
+
+input SystemSettingWhereInput {
+  createdAt: DateTimeNullableFilter
+  description: StringNullableFilter
+  id: IntFilter
+  settingKey: StringNullableFilter
+  settingValue: StringNullableFilter
+  updatedAt: DateTimeNullableFilter
+}
+
+input SystemSettingWhereUniqueInput {
+  id: Float!
+}
+
+type Transaction {
+  amount: Float
+  createdAt: DateTime
+  id: Float!
+  orders: Order
+  status: String
+  transactionStatuses(orderBy: [TransactionStatusOrderByInput!], skip: Float, take: Float, where: TransactionStatusWhereInput): [TransactionStatus!]!
+  transactionType: String
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input TransactionCreateInput {
+  amount: Float
+  orders: OrderWhereUniqueInput
+  status: String
+  transactionStatuses: TransactionStatusCreateNestedManyWithoutTransactionsInput
+  transactionType: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input TransactionCreateNestedManyWithoutOrdersInput {
+  connect: [TransactionWhereUniqueInput!]
+}
+
+input TransactionCreateNestedManyWithoutUserModelsInput {
+  connect: [TransactionWhereUniqueInput!]
+}
+
+input TransactionListRelationFilter {
+  every: TransactionWhereInput
+  none: TransactionWhereInput
+  some: TransactionWhereInput
+}
+
+input TransactionOrderByInput {
+  amount: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  order_id: SortOrder
+  status: SortOrder
+  transactionType: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+type TransactionStatus {
+  id: Float!
+  status: String
+  statusDate: DateTime
+  transactions: Transaction
+}
+
+input TransactionStatusCreateInput {
+  status: String
+  transactions: TransactionWhereUniqueInput
+}
+
+input TransactionStatusCreateNestedManyWithoutTransactionsInput {
+  connect: [TransactionStatusWhereUniqueInput!]
+}
+
+input TransactionStatusListRelationFilter {
+  every: TransactionStatusWhereInput
+  none: TransactionStatusWhereInput
+  some: TransactionStatusWhereInput
+}
+
+input TransactionStatusOrderByInput {
+  id: SortOrder
+  status: SortOrder
+  statusDate: SortOrder
+  transaction_id: SortOrder
+}
+
+input TransactionStatusUpdateInput {
+  status: String
+  transactions: TransactionWhereUniqueInput
+}
+
+input TransactionStatusUpdateManyWithoutTransactionsInput {
+  connect: [TransactionStatusWhereUniqueInput!]
+  disconnect: [TransactionStatusWhereUniqueInput!]
+  set: [TransactionStatusWhereUniqueInput!]
+}
+
+input TransactionStatusWhereInput {
+  id: IntFilter
+  status: StringNullableFilter
+  statusDate: DateTimeNullableFilter
+  transactions: TransactionWhereUniqueInput
+}
+
+input TransactionStatusWhereUniqueInput {
+  id: Float!
+}
+
+input TransactionUpdateInput {
+  amount: Float
+  orders: OrderWhereUniqueInput
+  status: String
+  transactionStatuses: TransactionStatusUpdateManyWithoutTransactionsInput
+  transactionType: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input TransactionUpdateManyWithoutOrdersInput {
+  connect: [TransactionWhereUniqueInput!]
+  disconnect: [TransactionWhereUniqueInput!]
+  set: [TransactionWhereUniqueInput!]
+}
+
+input TransactionUpdateManyWithoutUserModelsInput {
+  connect: [TransactionWhereUniqueInput!]
+  disconnect: [TransactionWhereUniqueInput!]
+  set: [TransactionWhereUniqueInput!]
+}
+
+input TransactionWhereInput {
+  amount: DecimalNullableFilter
+  createdAt: DateTimeNullableFilter
+  id: IntFilter
+  orders: OrderWhereUniqueInput
+  status: StringNullableFilter
+  transactionStatuses: TransactionStatusListRelationFilter
+  transactionType: StringNullableFilter
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input TransactionWhereUniqueInput {
+  id: Float!
+}
+
+type User {
+  createdAt: DateTime!
+  firstName: String
+  id: String!
+  lastName: String
+  roles: JSON!
+  updatedAt: DateTime!
+  username: String!
+}
+
+type UserAddress {
+  addressLine1: String
+  addressLine2: String
+  city: String
+  country: String
+  createdAt: DateTime
+  id: Float!
+  isPrimary: Boolean
+  orders(orderBy: [OrderOrderByInput!], skip: Float, take: Float, where: OrderWhereInput): [Order!]!
+  pincode: String
+  state: String
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input UserAddressCreateInput {
+  addressLine1: String
+  addressLine2: String
+  city: String
+  country: String
+  isPrimary: Boolean
+  orders: OrderCreateNestedManyWithoutUserAddressesInput
+  pincode: String
+  state: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input UserAddressCreateNestedManyWithoutUserModelsInput {
+  connect: [UserAddressWhereUniqueInput!]
+}
+
+input UserAddressListRelationFilter {
+  every: UserAddressWhereInput
+  none: UserAddressWhereInput
+  some: UserAddressWhereInput
+}
+
+input UserAddressOrderByInput {
+  addressLine1: SortOrder
+  addressLine2: SortOrder
+  city: SortOrder
+  country: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  isPrimary: SortOrder
+  pincode: SortOrder
+  state: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+input UserAddressUpdateInput {
+  addressLine1: String
+  addressLine2: String
+  city: String
+  country: String
+  isPrimary: Boolean
+  orders: OrderUpdateManyWithoutUserAddressesInput
+  pincode: String
+  state: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input UserAddressUpdateManyWithoutUserModelsInput {
+  connect: [UserAddressWhereUniqueInput!]
+  disconnect: [UserAddressWhereUniqueInput!]
+  set: [UserAddressWhereUniqueInput!]
+}
+
+input UserAddressWhereInput {
+  addressLine1: StringNullableFilter
+  addressLine2: StringNullableFilter
+  city: StringNullableFilter
+  country: StringNullableFilter
+  createdAt: DateTimeNullableFilter
+  id: IntFilter
+  isPrimary: BooleanNullableFilter
+  orders: OrderListRelationFilter
+  pincode: StringNullableFilter
+  state: StringNullableFilter
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input UserAddressWhereUniqueInput {
+  id: Float!
+}
+
+input UserCreateInput {
+  firstName: String
+  lastName: String
+  password: String!
+  roles: JSON!
+  username: String!
+}
+
+type UserInfo {
+  accessToken: String
+  id: String!
+  roles: [String!]!
+  username: String!
+}
+
+type UserModel {
+  accessLogs(orderBy: [AccessLogOrderByInput!], skip: Float, take: Float, where: AccessLogWhereInput): [AccessLog!]!
+  appleSsoToken: String
+  couponRedemptions(orderBy: [CouponRedemptionOrderByInput!], skip: Float, take: Float, where: CouponRedemptionWhereInput): [CouponRedemption!]!
+  createdAt: DateTime
+  customerPreferences(orderBy: [CustomerPreferenceOrderByInput!], skip: Float, take: Float, where: CustomerPreferenceWhereInput): [CustomerPreference!]!
+  customerSubscriptions(orderBy: [CustomerSubscriptionOrderByInput!], skip: Float, take: Float, where: CustomerSubscriptionWhereInput): [CustomerSubscription!]!
+  email: String!
+  emailPassword: String!
+  errorLogs(orderBy: [ErrorLogOrderByInput!], skip: Float, take: Float, where: ErrorLogWhereInput): [ErrorLog!]!
+  facebookSsoToken: String
+  favorites(orderBy: [FavoriteOrderByInput!], skip: Float, take: Float, where: FavoriteWhereInput): [Favorite!]!
+  googleSsoToken: String
+  id: Float!
+  name: String
+  notificationSettings(orderBy: [NotificationSettingOrderByInput!], skip: Float, take: Float, where: NotificationSettingWhereInput): [NotificationSetting!]!
+  notifications(orderBy: [NotificationOrderByInput!], skip: Float, take: Float, where: NotificationWhereInput): [Notification!]!
+  orders(orderBy: [OrderOrderByInput!], skip: Float, take: Float, where: OrderWhereInput): [Order!]!
+  phoneNumber: String!
+  reports(orderBy: [ReportOrderByInput!], skip: Float, take: Float, where: ReportWhereInput): [Report!]!
+  reservations(orderBy: [ReservationOrderByInput!], skip: Float, take: Float, where: ReservationWhereInput): [Reservation!]!
+  reviews(orderBy: [ReviewOrderByInput!], skip: Float, take: Float, where: ReviewWhereInput): [Review!]!
+  rewards(orderBy: [RewardOrderByInput!], skip: Float, take: Float, where: RewardWhereInput): [Reward!]!
+  subscriptions(orderBy: [SubscriptionOrderByInput!], skip: Float, take: Float, where: SubscriptionWhereInput): [Subscription!]!
+  transactions(orderBy: [TransactionOrderByInput!], skip: Float, take: Float, where: TransactionWhereInput): [Transaction!]!
+  twitterSsoToken: String
+  updatedAt: DateTime
+  userAddresses(orderBy: [UserAddressOrderByInput!], skip: Float, take: Float, where: UserAddressWhereInput): [UserAddress!]!
+  wishlist(orderBy: [WishlistOrderByInput!], skip: Float, take: Float, where: WishlistWhereInput): [Wishlist!]!
+}
+
+input UserModelCreateInput {
+  accessLogs: AccessLogCreateNestedManyWithoutUserModelsInput
+  appleSsoToken: String
+  couponRedemptions: CouponRedemptionCreateNestedManyWithoutUserModelsInput
+  customerPreferences: CustomerPreferenceCreateNestedManyWithoutUserModelsInput
+  customerSubscriptions: CustomerSubscriptionCreateNestedManyWithoutUserModelsInput
+  email: String!
+  emailPassword: String!
+  errorLogs: ErrorLogCreateNestedManyWithoutUserModelsInput
+  facebookSsoToken: String
+  favorites: FavoriteCreateNestedManyWithoutUserModelsInput
+  googleSsoToken: String
+  name: String
+  notificationSettings: NotificationSettingCreateNestedManyWithoutUserModelsInput
+  notifications: NotificationCreateNestedManyWithoutUserModelsInput
+  orders: OrderCreateNestedManyWithoutUserModelsInput
+  phoneNumber: String!
+  reports: ReportCreateNestedManyWithoutUserModelsInput
+  reservations: ReservationCreateNestedManyWithoutUserModelsInput
+  reviews: ReviewCreateNestedManyWithoutUserModelsInput
+  rewards: RewardCreateNestedManyWithoutUserModelsInput
+  subscriptions: SubscriptionCreateNestedManyWithoutUserModelsInput
+  transactions: TransactionCreateNestedManyWithoutUserModelsInput
+  twitterSsoToken: String
+  updatedAt: DateTime
+  userAddresses: UserAddressCreateNestedManyWithoutUserModelsInput
+  wishlist: WishlistCreateNestedManyWithoutUserModelsInput
+}
+
+input UserModelOrderByInput {
+  appleSsoToken: SortOrder
+  createdAt: SortOrder
+  email: SortOrder
+  emailPassword: SortOrder
+  facebookSsoToken: SortOrder
+  googleSsoToken: SortOrder
+  id: SortOrder
+  name: SortOrder
+  phoneNumber: SortOrder
+  twitterSsoToken: SortOrder
+  updatedAt: SortOrder
+}
+
+input UserModelUpdateInput {
+  accessLogs: AccessLogUpdateManyWithoutUserModelsInput
+  appleSsoToken: String
+  couponRedemptions: CouponRedemptionUpdateManyWithoutUserModelsInput
+  customerPreferences: CustomerPreferenceUpdateManyWithoutUserModelsInput
+  customerSubscriptions: CustomerSubscriptionUpdateManyWithoutUserModelsInput
+  email: String
+  emailPassword: String
+  errorLogs: ErrorLogUpdateManyWithoutUserModelsInput
+  facebookSsoToken: String
+  favorites: FavoriteUpdateManyWithoutUserModelsInput
+  googleSsoToken: String
+  name: String
+  notificationSettings: NotificationSettingUpdateManyWithoutUserModelsInput
+  notifications: NotificationUpdateManyWithoutUserModelsInput
+  orders: OrderUpdateManyWithoutUserModelsInput
+  phoneNumber: String
+  reports: ReportUpdateManyWithoutUserModelsInput
+  reservations: ReservationUpdateManyWithoutUserModelsInput
+  reviews: ReviewUpdateManyWithoutUserModelsInput
+  rewards: RewardUpdateManyWithoutUserModelsInput
+  subscriptions: SubscriptionUpdateManyWithoutUserModelsInput
+  transactions: TransactionUpdateManyWithoutUserModelsInput
+  twitterSsoToken: String
+  updatedAt: DateTime
+  userAddresses: UserAddressUpdateManyWithoutUserModelsInput
+  wishlist: WishlistUpdateManyWithoutUserModelsInput
+}
+
+input UserModelWhereInput {
+  accessLogs: AccessLogListRelationFilter
+  appleSsoToken: StringNullableFilter
+  couponRedemptions: CouponRedemptionListRelationFilter
+  createdAt: DateTimeNullableFilter
+  customerPreferences: CustomerPreferenceListRelationFilter
+  customerSubscriptions: CustomerSubscriptionListRelationFilter
+  email: StringFilter
+  emailPassword: StringFilter
+  errorLogs: ErrorLogListRelationFilter
+  facebookSsoToken: StringNullableFilter
+  favorites: FavoriteListRelationFilter
+  googleSsoToken: StringNullableFilter
+  id: IntFilter
+  name: StringNullableFilter
+  notificationSettings: NotificationSettingListRelationFilter
+  notifications: NotificationListRelationFilter
+  orders: OrderListRelationFilter
+  phoneNumber: StringFilter
+  reports: ReportListRelationFilter
+  reservations: ReservationListRelationFilter
+  reviews: ReviewListRelationFilter
+  rewards: RewardListRelationFilter
+  subscriptions: SubscriptionListRelationFilter
+  transactions: TransactionListRelationFilter
+  twitterSsoToken: StringNullableFilter
+  updatedAt: DateTimeNullableFilter
+  userAddresses: UserAddressListRelationFilter
+  wishlist: WishlistListRelationFilter
+}
+
+input UserModelWhereUniqueInput {
+  id: Float!
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  roles: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  firstName: String
+  lastName: String
+  password: String
+  roles: JSON
+  username: String
+}
+
+input UserWhereInput {
+  firstName: StringNullableFilter
+  id: StringFilter
+  lastName: StringNullableFilter
+  username: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}
+
+type Wishlist {
+  createdAt: DateTime
+  id: Float!
+  itemId: Float
+  itemType: String
+  updatedAt: DateTime
+  userModels: UserModel
+}
+
+input WishlistCreateInput {
+  itemId: Float
+  itemType: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input WishlistCreateNestedManyWithoutUserModelsInput {
+  connect: [WishlistWhereUniqueInput!]
+}
+
+input WishlistListRelationFilter {
+  every: WishlistWhereInput
+  none: WishlistWhereInput
+  some: WishlistWhereInput
+}
+
+input WishlistOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  itemId: SortOrder
+  itemType: SortOrder
+  updatedAt: SortOrder
+  user_id: SortOrder
+}
+
+input WishlistUpdateInput {
+  itemId: Float
+  itemType: String
+  updatedAt: DateTime
+  userModels: UserModelWhereUniqueInput
+}
+
+input WishlistUpdateManyWithoutUserModelsInput {
+  connect: [WishlistWhereUniqueInput!]
+  disconnect: [WishlistWhereUniqueInput!]
+  set: [WishlistWhereUniqueInput!]
+}
+
+input WishlistWhereInput {
+  createdAt: DateTimeNullableFilter
+  id: IntFilter
+  itemId: IntNullableFilter
+  itemType: StringNullableFilter
+  updatedAt: DateTimeNullableFilter
+  userModels: UserModelWhereUniqueInput
+}
+
+input WishlistWhereUniqueInput {
+  id: Float!
+}

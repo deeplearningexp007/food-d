@@ -1,0 +1,30 @@
+import { Decimal } from "decimal.js";
+import { FavoriteRestaurant } from "../favoriteRestaurant/FavoriteRestaurant";
+import { Menu } from "../menu/Menu";
+import { Order } from "../order/Order";
+import { Reservation } from "../reservation/Reservation";
+import { RestaurantDetail } from "../restaurantDetail/RestaurantDetail";
+import { Review } from "../review/Review";
+
+export type Restaurant = {
+  address: string | null;
+  averageCost: Decimal | null;
+  closingHours: string | null;
+  createdAt: Date | null;
+  email: string | null;
+  favoriteRestaurants?: Array<FavoriteRestaurant>;
+  filterTag: string | null;
+  hashtags: string | null;
+  id: number;
+  isActive: boolean | null;
+  menus?: Array<Menu>;
+  name: string | null;
+  openingHours: string | null;
+  orders?: Array<Order>;
+  phoneNumber: string | null;
+  reservations?: Array<Reservation>;
+  restaurantDetails?: Array<RestaurantDetail>;
+  reviews?: Array<Review>;
+  shareSlug: string | null;
+  updatedAt: Date | null;
+};

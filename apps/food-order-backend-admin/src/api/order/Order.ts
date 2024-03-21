@@ -1,0 +1,32 @@
+import { Coupon } from "../coupon/Coupon";
+import { Decimal } from "decimal.js";
+import { OrderItem } from "../orderItem/OrderItem";
+import { PaymentMethod } from "../paymentMethod/PaymentMethod";
+import { Payment } from "../payment/Payment";
+import { Restaurant } from "../restaurant/Restaurant";
+import { Transaction } from "../transaction/Transaction";
+import { UserAddress } from "../userAddress/UserAddress";
+import { UserModel } from "../userModel/UserModel";
+
+export type Order = {
+  coupons?: Coupon | null;
+  deliveryTime: Date | null;
+  discountAmount: Decimal | null;
+  finalAmount: Decimal | null;
+  id: number;
+  isDelivered: boolean | null;
+  isPaid: boolean | null;
+  orderDate: Date | null;
+  orderItems?: Array<OrderItem>;
+  orderType: string | null;
+  paymentMethods?: PaymentMethod | null;
+  payments?: Array<Payment>;
+  restaurants?: Restaurant | null;
+  scheduledDeliveryTime: Date | null;
+  specialInstructions: string | null;
+  status: string | null;
+  totalAmount: Decimal | null;
+  transactions?: Array<Transaction>;
+  userAddresses?: UserAddress | null;
+  userModels?: UserModel | null;
+};

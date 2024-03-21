@@ -1,0 +1,30 @@
+import { IntNullableFilter } from "../../util/IntNullableFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { FavoriteMenuItemListRelationFilter } from "../favoriteMenuItem/FavoriteMenuItemListRelationFilter";
+import { IntFilter } from "../../util/IntFilter";
+import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
+import { MenuItemCategoryListRelationFilter } from "../menuItemCategory/MenuItemCategoryListRelationFilter";
+import { MenuItemCategoryWhereUniqueInput } from "../menuItemCategory/MenuItemCategoryWhereUniqueInput";
+import { MenuWhereUniqueInput } from "../menu/MenuWhereUniqueInput";
+import { OrderItemListRelationFilter } from "../orderItem/OrderItemListRelationFilter";
+import { DecimalNullableFilter } from "../../util/DecimalNullableFilter";
+
+export type MenuItemWhereInput = {
+  availableQuantity?: IntNullableFilter;
+  description?: StringNullableFilter;
+  favoriteMenuItems?: FavoriteMenuItemListRelationFilter;
+  hashtags?: StringNullableFilter;
+  id?: IntFilter;
+  imageUrl?: StringNullableFilter;
+  ingredients?: StringNullableFilter;
+  isActive?: BooleanNullableFilter;
+  isVegetarian?: BooleanNullableFilter;
+  menuItemCategoriesMenuItemCategoriesMenuItemIdToMenuItems?: MenuItemCategoryListRelationFilter;
+  menuItemCategoriesMenuItemsCategoryIdToMenuItemCategories?: MenuItemCategoryWhereUniqueInput;
+  menus?: MenuWhereUniqueInput;
+  name?: StringNullableFilter;
+  orderItems?: OrderItemListRelationFilter;
+  preparationTime?: IntNullableFilter;
+  price?: DecimalNullableFilter;
+  shareSlug?: StringNullableFilter;
+};

@@ -1,0 +1,30 @@
+import { CouponWhereUniqueInput } from "../coupon/CouponWhereUniqueInput";
+import { Decimal } from "decimal.js";
+import { OrderItemCreateNestedManyWithoutOrdersInput } from "./OrderItemCreateNestedManyWithoutOrdersInput";
+import { PaymentMethodWhereUniqueInput } from "../paymentMethod/PaymentMethodWhereUniqueInput";
+import { PaymentCreateNestedManyWithoutOrdersInput } from "./PaymentCreateNestedManyWithoutOrdersInput";
+import { RestaurantWhereUniqueInput } from "../restaurant/RestaurantWhereUniqueInput";
+import { TransactionCreateNestedManyWithoutOrdersInput } from "./TransactionCreateNestedManyWithoutOrdersInput";
+import { UserAddressWhereUniqueInput } from "../userAddress/UserAddressWhereUniqueInput";
+import { UserModelWhereUniqueInput } from "../userModel/UserModelWhereUniqueInput";
+
+export type OrderCreateInput = {
+  coupons?: CouponWhereUniqueInput | null;
+  deliveryTime?: Date | null;
+  discountAmount?: Decimal | null;
+  finalAmount?: Decimal | null;
+  isDelivered?: boolean | null;
+  isPaid?: boolean | null;
+  orderItems?: OrderItemCreateNestedManyWithoutOrdersInput;
+  orderType?: string | null;
+  paymentMethods?: PaymentMethodWhereUniqueInput | null;
+  payments?: PaymentCreateNestedManyWithoutOrdersInput;
+  restaurants?: RestaurantWhereUniqueInput | null;
+  scheduledDeliveryTime?: Date | null;
+  specialInstructions?: string | null;
+  status?: string | null;
+  totalAmount?: Decimal | null;
+  transactions?: TransactionCreateNestedManyWithoutOrdersInput;
+  userAddresses?: UserAddressWhereUniqueInput | null;
+  userModels?: UserModelWhereUniqueInput | null;
+};

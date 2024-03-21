@@ -9,7 +9,6 @@ generator client {
 
 model User {
   createdAt DateTime @default(now())
-  email     String?  @unique
   firstName String?
   id        String   @id @default(cuid())
   lastName  String?
@@ -17,4 +16,537 @@ model User {
   roles     Json
   updatedAt DateTime @updatedAt
   username  String   @unique
+}
+
+model AccessLog {
+  action         String?    @db.VarChar(255)
+  deviceInfo     Json?      @map("device_info") @db.Json
+  errorMessage   String?    @map("error_message")
+  id             Int        @id @default(autoincrement()) @map("log_id")
+  ipAddress      String?    @map("ip_address") @db.VarChar(15)
+  responseStatus Int?       @map("response_status")
+  timestamp      DateTime?  @db.Timestamp(6)
+  userModels     UserModel? @relation(fields: [user_id], references: [id])
+  user_id        Int?
+
+  @@map("AccessLogs")
+}
+
+model CouponRedemption {
+  coupons        Coupon    @relation(fields: [coupon_id], references: [id])
+  coupon_id      Int
+  id             Int       @id @default(autoincrement()) @map("redemption_id")
+  isRedeemed     Boolean?  @default(false) @map("is_redeemed")
+  redemptionDate DateTime  @map("redemption_date") @db.Date
+  userModels     UserModel @relation(fields: [user_id], references: [id])
+  user_id        Int
+
+  @@map("CouponRedemptions")
+}
+
+model Coupon {
+  code               String             @unique @db.VarChar(255)
+  couponRedemptions  CouponRedemption[]
+  discountPercentage Decimal            @map("discount_percentage") @db.Decimal(5, 2)
+  expirationDate     DateTime           @map("expiration_date") @db.Date
+  id                 Int                @id @default(autoincrement()) @map("coupon_id")
+  isActive           Boolean?           @default(true) @map("is_active")
+  orders             Order[]
+
+  @@map("Coupons")
+}
+
+model CustomerPreference {
+  createdAt       DateTime?  @default(now()) @map("created_at") @db.Timestamp(6)
+  id              Int        @id @default(autoincrement()) @map("preference_id")
+  preferenceType  String?    @map("preference_type") @db.VarChar(255)
+  preferenceValue String?    @map("preference_value") @db.VarChar(255)
+  updatedAt       DateTime?  @map("updated_at") @db.Timestamp(6)
+  userModels      UserModel? @relation(fields: [user_id], references: [id])
+  user_id         Int?
+
+  @@map("CustomerPreferences")
+}
+
+model CustomerSubscription {
+  activationDate    DateTime         @map("activation_date") @db.Date
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamp(6)
+  expirationDate    DateTime?        @map("expiration_date") @db.Date
+  id                Int              @id @default(autoincrement()) @map("customer_subscription_id")
+  renewalCount      Int              @default(0) @map("renewal_count")
+  subscriptionPlans SubscriptionPlan @relation(fields: [plan_id], references: [id])
+  plan_id           Int
+  subscriptions     Subscription     @relation(fields: [subscription_id], references: [id])
+  subscription_id   Int
+  updatedAt         DateTime?        @map("updated_at") @db.Timestamp(6)
+  userModels        UserModel        @relation(fields: [user_id], references: [id])
+  user_id           Int
+
+  @@map("CustomerSubscriptions")
+}
+
+model ErrorLog {
+  errorCode    Int?       @map("error_code")
+  errorMessage String?    @map("error_message")
+  id           Int        @id @default(autoincrement()) @map("error_id")
+  requestInfo  Json?      @map("request_info") @db.Json
+  stackTrace   String?    @map("stack_trace")
+  timestamp    DateTime?  @db.Timestamp(6)
+  userModels   UserModel? @relation(fields: [user_id], references: [id])
+  user_id      Int?
+
+  @@map("ErrorLogs")
+}
+
+model FavoriteMenuItem {
+  createdAt    DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  favorites    Favorite? @relation(fields: [favorite_id], references: [id])
+  favorite_id  Int?
+  id           Int       @id @default(autoincrement()) @map("favorite_menu_item_id")
+  menuItems    MenuItem? @relation(fields: [menu_item_id], references: [id])
+  menu_item_id Int?
+
+  @@map("FavoriteMenuItems")
+}
+
+model FavoriteRestaurant {
+  createdAt     DateTime?   @default(now()) @map("created_at") @db.Timestamp(6)
+  favorites     Favorite?   @relation(fields: [favorite_id], references: [id])
+  favorite_id   Int?
+  id            Int         @id @default(autoincrement()) @map("favorite_restaurant_id")
+  restaurants   Restaurant? @relation(fields: [restaurant_id], references: [id])
+  restaurant_id Int?
+
+  @@map("FavoriteRestaurants")
+}
+
+model Favorite {
+  createdAt           DateTime?            @default(now()) @map("created_at") @db.Timestamp(6)
+  favoriteMenuItems   FavoriteMenuItem[]
+  favoriteRestaurants FavoriteRestaurant[]
+  id                  Int                  @id @default(autoincrement()) @map("favorite_id")
+  updatedAt           DateTime?            @map("updated_at") @db.Timestamp(6)
+  userModels          UserModel?           @relation(fields: [user_id], references: [id])
+  user_id             Int?
+
+  @@map("Favorites")
+}
+
+model GeoLocation {
+  address       String?
+  city          String?    @db.VarChar(100)
+  country       String?    @db.VarChar(100)
+  geofences     Geofence[]
+  id            Int        @id @default(autoincrement()) @map("location_id")
+  initialSignon Boolean?   @default(false) @map("initial_signon")
+  latitude      Decimal?   @db.Decimal(10, 7)
+  longitude     Decimal?   @db.Decimal(10, 7)
+  postalCode    String?    @map("postal_code") @db.VarChar(20)
+  state         String?    @db.VarChar(100)
+
+  @@map("GeoLocations")
+}
+
+model Geofence {
+  createdAt    DateTime?    @map("created_at") @db.Timestamp(6)
+  description  String?
+  geoLocations GeoLocation? @relation(fields: [location_id], references: [id])
+  location_id  Int?
+  id           Int          @id @default(autoincrement()) @map("geofence_id")
+  name         String?      @db.VarChar(255)
+  radius       Int?
+  updatedAt    DateTime?    @map("updated_at") @db.Timestamp(6)
+
+  @@map("Geofences")
+}
+
+model Hashtag {
+  createdAt DateTime? @map("created_at") @db.Timestamp(6)
+  hashText  String?   @map("hash_text") @db.VarChar(255)
+  id        Int       @id @default(autoincrement()) @map("hashtag_id")
+  tag       String?   @unique @db.VarChar(255)
+  updatedAt DateTime? @map("updated_at") @db.Timestamp(6)
+
+  @@map("Hashtags")
+}
+
+model MenuItemCategory {
+  id                                               Int        @id @default(autoincrement()) @map("category_id")
+  menuItemsMenuItemCategoriesMenuItemIdToMenuItems MenuItem?  @relation(name: "menuItemCategoriesMenuItemCategoriesMenuItemIdToMenuItems", fields: [menu_item_id], references: [id])
+  menu_item_id                                     Int?
+  menuItemsMenuItemsCategoryIdToMenuItemCategories MenuItem[] @relation(name: "menuItemCategoriesMenuItemsCategoryIdToMenuItemCategories")
+  name                                             String?    @db.VarChar(255)
+
+  @@map("MenuItemCategories")
+}
+
+model MenuItem {
+  availableQuantity                                         Int?               @map("available_quantity")
+  description                                               String?
+  favoriteMenuItems                                         FavoriteMenuItem[]
+  hashtags                                                  String?
+  id                                                        Int                @id @default(autoincrement()) @map("menu_item_id")
+  imageUrl                                                  String?            @map("image_url") @db.VarChar(255)
+  ingredients                                               String?
+  isActive                                                  Boolean?           @default(true) @map("is_active")
+  isVegetarian                                              Boolean?           @map("is_vegetarian")
+  menuItemCategoriesMenuItemCategoriesMenuItemIdToMenuItems MenuItemCategory[] @relation(name: "menuItemCategoriesMenuItemCategoriesMenuItemIdToMenuItems")
+  menuItemCategoriesMenuItemsCategoryIdToMenuItemCategories MenuItemCategory?  @relation(name: "menuItemCategoriesMenuItemsCategoryIdToMenuItemCategories", fields: [category_id], references: [id])
+  category_id                                               Int?
+  menus                                                     Menu?              @relation(fields: [menu_id], references: [id])
+  menu_id                                                   Int?
+  name                                                      String?            @db.VarChar(255)
+  orderItems                                                OrderItem[]
+  preparationTime                                           Int?               @map("preparation_time")
+  price                                                     Decimal?           @db.Decimal(10, 2)
+  shareSlug                                                 String?            @map("share_slug") @db.VarChar(255)
+
+  @@map("MenuItems")
+}
+
+model Menu {
+  createdAt     DateTime?   @map("created_at") @db.Timestamp(6)
+  description   String?
+  id            Int         @id @default(autoincrement()) @map("menu_id")
+  isActive      Boolean?    @map("is_active")
+  menuItems     MenuItem[]
+  name          String?     @db.VarChar(255)
+  restaurants   Restaurant? @relation(fields: [restaurant_id], references: [id])
+  restaurant_id Int?
+  updatedAt     DateTime?   @map("updated_at") @db.Timestamp(6)
+
+  @@map("Menus")
+}
+
+model NotificationSetting {
+  createdAt    DateTime?  @default(now()) @map("created_at") @db.Timestamp(6)
+  id           Int        @id @default(autoincrement()) @map("setting_id")
+  settingName  String?    @map("setting_name") @db.VarChar(255)
+  settingValue Boolean?   @default(true) @map("setting_value")
+  updatedAt    DateTime?  @map("updated_at") @db.Timestamp(6)
+  userModels   UserModel? @relation(fields: [user_id], references: [id])
+  user_id      Int?
+
+  @@map("NotificationSettings")
+}
+
+model Notification {
+  createdAt  DateTime?  @default(now()) @map("created_at") @db.Timestamp(6)
+  id         Int        @id @default(autoincrement()) @map("notification_id")
+  isRead     Boolean?   @default(false) @map("is_read")
+  message    String?
+  userModels UserModel? @relation(fields: [user_id], references: [id])
+  user_id    Int?
+
+  @@map("Notifications")
+}
+
+model OrderItem {
+  customizationOptions String?   @map("customization_options")
+  id                   Int       @id @default(autoincrement()) @map("order_item_id")
+  itemDescription      String?   @map("item_description")
+  itemImage            String?   @map("item_image") @db.VarChar(255)
+  itemName             String?   @map("item_name") @db.VarChar(255)
+  menuItems            MenuItem? @relation(fields: [menu_item_id], references: [id])
+  menu_item_id         Int?
+  orders               Order?    @relation(fields: [order_id], references: [id])
+  order_id             Int?
+  price                Decimal?  @db.Decimal(10, 2)
+  quantity             Int?
+
+  @@map("OrderItems")
+}
+
+model Order {
+  coupons               Coupon?        @relation(fields: [coupon_id], references: [id])
+  coupon_id             Int?
+  deliveryTime          DateTime?      @map("delivery_time") @db.Timestamp(6)
+  discountAmount        Decimal?       @map("discount_amount") @db.Decimal(10, 2)
+  finalAmount           Decimal?       @map("final_amount") @db.Decimal(10, 2)
+  id                    Int            @id @default(autoincrement()) @map("order_id")
+  isDelivered           Boolean?       @default(false) @map("is_delivered")
+  isPaid                Boolean?       @default(false) @map("is_paid")
+  orderDate             DateTime?      @default(now()) @map("order_date") @db.Timestamp(6)
+  orderItems            OrderItem[]
+  orderType             String?        @map("order_type") @db.VarChar(50)
+  paymentMethods        PaymentMethod? @relation(fields: [payment_method_id], references: [id])
+  payment_method_id     Int?
+  payments              Payment[]
+  restaurants           Restaurant?    @relation(fields: [restaurant_id], references: [id])
+  restaurant_id         Int?
+  scheduledDeliveryTime DateTime?      @map("scheduled_delivery_time") @db.Timestamp(6)
+  specialInstructions   String?        @map("special_instructions")
+  status                String?        @db.VarChar(50)
+  totalAmount           Decimal?       @map("total_amount") @db.Decimal(10, 2)
+  transactions          Transaction[]
+  userAddresses         UserAddress?   @relation(fields: [delivery_address_id], references: [id])
+  delivery_address_id   Int?
+  userModels            UserModel?     @relation(fields: [user_id], references: [id])
+  user_id               Int?
+
+  @@map("Orders")
+}
+
+model PaymentMethod {
+  id            Int       @id @default(autoincrement()) @map("method_id")
+  methodDetails String?   @map("method_details")
+  methodName    String?   @map("method_name") @db.VarChar(50)
+  orders        Order[]
+  payments      Payment[]
+
+  @@map("PaymentMethods")
+}
+
+model Payment {
+  id                Int           @id @default(autoincrement()) @map("payment_id")
+  orders            Order         @relation(fields: [order_id], references: [id])
+  order_id          Int
+  paymentAmount     Decimal?      @map("payment_amount") @db.Decimal(10, 2)
+  paymentDate       DateTime?     @map("payment_date") @db.Timestamp(6)
+  paymentMethods    PaymentMethod @relation(fields: [payment_method_id], references: [id])
+  payment_method_id Int
+  paymentStatus     String?       @map("payment_status") @db.VarChar(50)
+  transactionId     String?       @map("transaction_id") @db.VarChar(100)
+
+  @@map("Payments")
+}
+
+model Report {
+  createdAt  DateTime?  @default(now()) @map("created_at") @db.Timestamp(6)
+  id         Int        @id @default(autoincrement()) @map("report_id")
+  reportData Json?      @map("report_data") @db.Json
+  reportType String?    @map("report_type") @db.VarChar(255)
+  updatedAt  DateTime?  @map("updated_at") @db.Timestamp(6)
+  userModels UserModel? @relation(fields: [user_id], references: [id])
+  user_id    Int?
+
+  @@map("Reports")
+}
+
+model Reservation {
+  createdAt       DateTime?   @map("created_at") @db.Timestamp(6)
+  id              Int         @id @default(autoincrement()) @map("reservation_id")
+  partySize       Int?        @map("party_size")
+  reservationDate DateTime?   @map("reservation_date") @db.Timestamp(6)
+  reservationTime DateTime?   @map("reservation_time") @db.Time(6)
+  restaurants     Restaurant? @relation(fields: [restaurant_id], references: [id])
+  restaurant_id   Int?
+  status          String?     @db.VarChar(50)
+  updatedAt       DateTime?   @map("updated_at") @db.Timestamp(6)
+  userModels      UserModel?  @relation(fields: [user_id], references: [id])
+  user_id         Int?
+
+  @@map("Reservations")
+}
+
+model RestaurantDetail {
+  deliveryCharge Decimal?    @map("delivery_charge") @db.Decimal
+  deliveryTime   String?     @map("delivery_time") @db.VarChar(50)
+  description    String?
+  id             Int         @id @default(autoincrement()) @map("detail_id")
+  imageUrl       String?     @map("image_url") @db.VarChar(255)
+  minOrderValue  Decimal?    @map("min_order_value") @db.Decimal
+  rating         Decimal?    @db.Decimal(3, 2)
+  restaurants    Restaurant? @relation(fields: [restaurant_id], references: [id])
+  restaurant_id  Int?
+  reviewCount    Int?        @map("review_count")
+
+  @@map("RestaurantDetails")
+}
+
+model Restaurant {
+  address             String?              @db.VarChar(255)
+  averageCost         Decimal?             @map("average_cost") @db.Decimal(10, 2)
+  closingHours        String?              @map("closing_hours") @db.VarChar(255)
+  createdAt           DateTime?            @map("created_at") @db.Timestamp(6)
+  email               String?              @db.VarChar(255)
+  favoriteRestaurants FavoriteRestaurant[]
+  filterTag           String?              @map("filter_tag") @db.VarChar(255)
+  hashtags            String?
+  id                  Int                  @id @default(autoincrement()) @map("restaurant_id")
+  isActive            Boolean?             @map("is_active")
+  menus               Menu[]
+  name                String?              @db.VarChar(255)
+  openingHours        String?              @map("opening_hours") @db.VarChar(255)
+  orders              Order[]
+  phoneNumber         String?              @map("phone_number") @db.VarChar(20)
+  reservations        Reservation[]
+  restaurantDetails   RestaurantDetail[]
+  reviews             Review[]
+  shareSlug           String?              @map("share_slug") @db.VarChar(255)
+  updatedAt           DateTime?            @map("updated_at") @db.Timestamp(6)
+
+  @@map("Restaurants")
+}
+
+model ReviewRating {
+  cleanliness   Decimal? @db.Decimal
+  foodQuality   Decimal? @map("food_quality") @db.Decimal
+  id            Int      @id @default(autoincrement()) @map("rating_id")
+  reviews       Review?  @relation(fields: [review_id], references: [id])
+  review_id     Int?
+  service       Decimal? @db.Decimal
+  valueForMoney Decimal? @map("value_for_money") @db.Decimal
+
+  @@map("ReviewRatings")
+}
+
+model Review {
+  body          String?
+  createdAt     DateTime?      @map("created_at") @db.Timestamp(6)
+  id            Int            @id @default(autoincrement()) @map("review_id")
+  rating        Decimal?       @db.Decimal
+  restaurants   Restaurant?    @relation(fields: [restaurant_id], references: [id])
+  restaurant_id Int?
+  reviewRatings ReviewRating[]
+  title         String?        @db.VarChar(255)
+  updatedAt     DateTime?      @map("updated_at") @db.Timestamp(6)
+  userModels    UserModel?     @relation(fields: [user_id], references: [id])
+  user_id       Int?
+
+  @@map("Reviews")
+}
+
+model Reward {
+  createdAt      DateTime?  @default(now()) @map("created_at") @db.Timestamp(6)
+  expirationDate DateTime?  @map("expiration_date") @db.Date
+  id             Int        @id @default(autoincrement()) @map("reward_id")
+  points         Int?       @default(0)
+  updatedAt      DateTime?  @map("updated_at") @db.Timestamp(6)
+  userModels     UserModel? @relation(fields: [user_id], references: [id])
+  user_id        Int?
+
+  @@map("Rewards")
+}
+
+model SubscriptionPlan {
+  createdAt             DateTime               @default(now()) @map("created_at") @db.Timestamp(6)
+  customerSubscriptions CustomerSubscription[]
+  description           String?
+  duration              Int
+  durationUnit          String                 @map("duration_unit") @db.VarChar(50)
+  id                    Int                    @id @default(autoincrement()) @map("plan_id")
+  isActive              Boolean                @default(true) @map("is_active")
+  name                  String                 @db.VarChar(100)
+  price                 Decimal                @db.Decimal(10, 2)
+  subscriptions         Subscription[]
+  updatedAt             DateTime?              @map("updated_at") @db.Timestamp(6)
+
+  @@map("SubscriptionPlans")
+}
+
+model Subscription {
+  autoRenew             Boolean                @default(false) @map("auto_renew")
+  createdAt             DateTime               @default(now()) @map("created_at") @db.Timestamp(6)
+  customerSubscriptions CustomerSubscription[]
+  endDate               DateTime?              @map("end_date") @db.Date
+  id                    Int                    @id @default(autoincrement()) @map("subscription_id")
+  paymentStatus         String                 @map("payment_status") @db.VarChar(50)
+  startDate             DateTime               @map("start_date") @db.Date
+  status                String                 @db.VarChar(50)
+  subscriptionPlans     SubscriptionPlan       @relation(fields: [plan_id], references: [id])
+  plan_id               Int
+  updatedAt             DateTime?              @map("updated_at") @db.Timestamp(6)
+  userModels            UserModel              @relation(fields: [user_id], references: [id])
+  user_id               Int
+
+  @@map("Subscriptions")
+}
+
+model SystemSetting {
+  createdAt    DateTime? @map("created_at") @db.Timestamp(6)
+  description  String?
+  id           Int       @id @default(autoincrement()) @map("setting_id")
+  settingKey   String?   @unique @map("setting_key") @db.VarChar(255)
+  settingValue String?   @map("setting_value")
+  updatedAt    DateTime? @map("updated_at") @db.Timestamp(6)
+
+  @@map("SystemSettings")
+}
+
+model TransactionStatus {
+  id             Int          @id @default(autoincrement()) @map("status_id")
+  status         String?      @db.VarChar(50)
+  statusDate     DateTime?    @default(now()) @map("status_date") @db.Timestamp(6)
+  transactions   Transaction? @relation(fields: [transaction_id], references: [id])
+  transaction_id Int?
+
+  @@map("TransactionStatuses")
+}
+
+model Transaction {
+  amount              Decimal?            @db.Decimal(10, 2)
+  createdAt           DateTime?           @default(now()) @map("created_at") @db.Timestamp(6)
+  id                  Int                 @id @default(autoincrement()) @map("transaction_id")
+  orders              Order?              @relation(fields: [order_id], references: [id])
+  order_id            Int?
+  status              String?             @db.VarChar(50)
+  transactionStatuses TransactionStatus[]
+  transactionType     String?             @map("transaction_type") @db.VarChar(50)
+  updatedAt           DateTime?           @map("updated_at") @db.Timestamp(6)
+  userModels          UserModel?          @relation(fields: [user_id], references: [id])
+  user_id             Int?
+
+  @@map("Transactions")
+}
+
+model UserAddress {
+  addressLine1 String?    @map("address_line_1") @db.VarChar(255)
+  addressLine2 String?    @map("address_line_2") @db.VarChar(255)
+  city         String?    @db.VarChar(255)
+  country      String?    @db.VarChar(255)
+  createdAt    DateTime?  @default(now()) @map("created_at") @db.Timestamp(6)
+  id           Int        @id @default(autoincrement()) @map("address_id")
+  isPrimary    Boolean?   @default(false) @map("is_primary")
+  orders       Order[]
+  pincode      String?    @db.VarChar(10)
+  state        String?    @db.VarChar(255)
+  updatedAt    DateTime?  @map("updated_at") @db.Timestamp(6)
+  userModels   UserModel? @relation(fields: [user_id], references: [id])
+  user_id      Int?
+
+  @@map("UserAddresses")
+}
+
+model UserModel {
+  accessLogs            AccessLog[]
+  appleSsoToken         String?                @map("apple_sso_token") @db.VarChar(255)
+  couponRedemptions     CouponRedemption[]
+  createdAt             DateTime?              @default(now()) @map("created_at") @db.Timestamp(6)
+  customerPreferences   CustomerPreference[]
+  customerSubscriptions CustomerSubscription[]
+  email                 String                 @unique @db.VarChar(255)
+  emailPassword         String                 @map("email_password") @db.VarChar(255)
+  errorLogs             ErrorLog[]
+  facebookSsoToken      String?                @map("facebook_sso_token") @db.VarChar(255)
+  favorites             Favorite[]
+  googleSsoToken        String?                @map("google_sso_token") @db.VarChar(255)
+  id                    Int                    @id @default(autoincrement()) @map("user_id")
+  name                  String?                @db.VarChar(255)
+  notifications         Notification[]
+  notificationSettings  NotificationSetting[]
+  orders                Order[]
+  phoneNumber           String                 @unique @map("phone_number") @db.VarChar(20)
+  reports               Report[]
+  reservations          Reservation[]
+  reviews               Review[]
+  rewards               Reward[]
+  subscriptions         Subscription[]
+  transactions          Transaction[]
+  twitterSsoToken       String?                @map("twitter_sso_token") @db.VarChar(255)
+  updatedAt             DateTime?              @map("updated_at") @db.Timestamp(6)
+  userAddresses         UserAddress[]
+  wishlist              Wishlist[]
+
+  @@map("UserModels")
+}
+
+model Wishlist {
+  createdAt  DateTime?  @default(now()) @map("created_at") @db.Timestamp(6)
+  id         Int        @id @default(autoincrement()) @map("wishlist_id")
+  itemId     Int?       @map("item_id")
+  itemType   String?    @map("item_type") @db.VarChar(255)
+  updatedAt  DateTime?  @map("updated_at") @db.Timestamp(6)
+  userModels UserModel? @relation(fields: [user_id], references: [id])
+  user_id    Int?
 }

@@ -1,0 +1,34 @@
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { DecimalNullableFilter } from "../../util/DecimalNullableFilter";
+import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { FavoriteRestaurantListRelationFilter } from "../favoriteRestaurant/FavoriteRestaurantListRelationFilter";
+import { IntFilter } from "../../util/IntFilter";
+import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
+import { MenuListRelationFilter } from "../menu/MenuListRelationFilter";
+import { OrderListRelationFilter } from "../order/OrderListRelationFilter";
+import { ReservationListRelationFilter } from "../reservation/ReservationListRelationFilter";
+import { RestaurantDetailListRelationFilter } from "../restaurantDetail/RestaurantDetailListRelationFilter";
+import { ReviewListRelationFilter } from "../review/ReviewListRelationFilter";
+
+export type RestaurantWhereInput = {
+  address?: StringNullableFilter;
+  averageCost?: DecimalNullableFilter;
+  closingHours?: StringNullableFilter;
+  createdAt?: DateTimeNullableFilter;
+  email?: StringNullableFilter;
+  favoriteRestaurants?: FavoriteRestaurantListRelationFilter;
+  filterTag?: StringNullableFilter;
+  hashtags?: StringNullableFilter;
+  id?: IntFilter;
+  isActive?: BooleanNullableFilter;
+  menus?: MenuListRelationFilter;
+  name?: StringNullableFilter;
+  openingHours?: StringNullableFilter;
+  orders?: OrderListRelationFilter;
+  phoneNumber?: StringNullableFilter;
+  reservations?: ReservationListRelationFilter;
+  restaurantDetails?: RestaurantDetailListRelationFilter;
+  reviews?: ReviewListRelationFilter;
+  shareSlug?: StringNullableFilter;
+  updatedAt?: DateTimeNullableFilter;
+};

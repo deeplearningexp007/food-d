@@ -27,17 +27,6 @@ class UserUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  email?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
   firstName?: string | null;
 
   @ApiProperty({

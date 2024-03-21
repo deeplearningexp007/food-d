@@ -1,6 +1,6 @@
 {
-  "short_name": "food-order-backend",
-  "name": "food-order-backend",
+  "short_name": "food_order_backend",
+  "name": "food_order_backend",
   "icons": [
     {
       "src": "favicon.ico",
